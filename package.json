@@ -18,7 +18,7 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "dayjs": "^1.11.5",
-    "framer-motion": "^7.5.2",
+    "framer-motion": "^8.1.9",
     "highlight.js": "^11.6.0",
     "html-react-parser": "^3.0.4",
     "microcms-js-sdk": "^2.2.1",
