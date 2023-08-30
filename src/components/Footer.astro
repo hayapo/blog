@@ -1,0 +1,105 @@
+---
+import { css } from "../../styled-system/css";
+import { Sprite } from "astro-icon";
+import ExternalLink from "./ExternalLink.astro";
+
+const today = new Date();
+
+const ICON_SIZE = "2.0rem";
+const ICON_SIZE_MOBILE = "1.5rem";
+
+const footerIcons = [
+  {
+    name: "Twitter",
+    icon: "mdi:twitter",
+    url: "https://x.com/hayapo_hip",
+    label: "Link to Twitter",
+  },
+  {
+    name: "Mastodon",
+    icon: "mdi:mastodon",
+    url: "https://mstdn.jp/@hayapo",
+    label: "Link to Mastodon.jp",
+  },
+  {
+    name: "Discord",
+    icon: "ic:baseline-discord",
+    url: "https://discord.com/channels/@hayato",
+    label: "Link to Discord",
+  },
+]
+
+const footerLinkStyle = css({
+  color: "inherit",
+  textDecoration: "underline",
+  "&:hover": {
+    color: "accent"
+  }
+})
+
+---
+
+<footer class={css({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "0.5rem",
+  p: "2rem 3rem",
+  backgroundColor: { base: "#CACACA", _dark: "#1A1A1A" },
+  color: { base: "#646464", _dark: "#B3B3B3" },
+  fontSize: "large",
+})}
+>
+  <div>
+    &copy; {today.getFullYear()} hayapo. All rights reserved.
+  </div>
+  <div>
+    This site is powered by 
+    <ExternalLink 
+      href="https://astro.build/"
+      title="Astro">
+      Astro
+    </ExternalLink>
+  </div>
+  <div>
+    <span>Source code of this site is </span>
+    <ExternalLink
+      href="https://github.com/hayapo/hayapo_blog"
+      title="Github"
+    >
+      here
+    </ExternalLink>
+  </div>
+  <!-- <div class={css({
+    display: "flex",
+    gap: "2rem",
+  })}>
+    <Sprite.Provider>
+      {footerIcons.map((icon) => {
+        return (
+          <span class="sr-only">Go to {icon.label}</span>
+          <a
+            href={icon.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={icon.label}
+          >
+            <Sprite 
+              name={icon.icon}
+              label={icon.label}
+              class={css({
+                color: { base: "#646464", _dark: "#B3B3B3", _hover: "accent" },
+                w: ICON_SIZE_MOBILE,
+                h: ICON_SIZE_MOBILE,
+                md: {
+                  w: ICON_SIZE,
+                  h: ICON_SIZE,
+                }
+              })}/>
+          </a>
+        )
+      })}
+    </Sprite.Provider>
+  </div> -->
+</footer>

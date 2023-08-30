@@ -1,0 +1,28 @@
+---
+import { css } from "../../styled-system/css"
+interface Props {
+  title: string,
+  href: string,
+}
+
+const { title, href } = Astro.props
+
+const defaultLinkStyle = css({
+  color: "accent",
+  _hover: {
+    textDecoration: "underline",
+    textUnderlineOffset: "0.2em",
+  }
+})
+
+---
+
+<a 
+  href={href}
+  title={`Link to ${title}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  class={defaultLinkStyle}
+>
+  <slot />
+</a>

@@ -1,0 +1,54 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { css } from '../../styled-system/css';
+import { Image } from 'astro:assets';
+import FormattedDate from './FormattedDate.astro';
+
+interface Props {
+  frontmatter: CollectionEntry<"blog">["data"]
+  slug: string
+}
+
+const { frontmatter, slug } = Astro.props
+
+---
+
+<li class:list={css({
+  position: "relative",
+  height: "100%",
+  border: "1px solid var(--colors-accent2)",
+  borderRadius: "0.7rem",
+  _hover: {
+    boxShadow: "0 0 0 3px var(--colors-accent)",
+    border: "none",
+  },
+  })}>
+  <a
+    href={`/${slug}`}
+    title={frontmatter.title}
+    class={css({
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      gap: "2rem",
+      _focusVisible: {
+        outline: "none",
+        boxShadow: "0 0 0 5px var(--colors-accent)",
+        border: "none",
+        rounded: "0.7rem"
+      },
+    })}
+    >
+    <Image
+      src={frontmatter.coverImage}
+      alt={frontmatter.title}
+      width={frontmatter.coverImage.width}
+      height={frontmatter.coverImage.height}
+      class={css({w: "100%",h: {base: "130px", md: "150px", lg: "200px"}, objectFit: "cover", roundedTop: "0.7rem"})}
+    />
+    <div class={css({ pb: "1rem", px: "1rem"})}>
+      <div class={css({fontSize: "large", fontWeight: "bold"})} >{frontmatter.title}</div>
+      <FormattedDate date={frontmatter.publishDate} />
+    </div>
+  </a>
+</li>
