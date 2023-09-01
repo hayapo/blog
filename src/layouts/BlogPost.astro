@@ -13,26 +13,30 @@ const {title, description, publishDate, updatedDate, coverImage, imageCredit} = 
 
 <Layout title={title} description={description}>
   <body>
-    <Image src={coverImage} width={coverImage.width / 1.5} height={coverImage.height / 1.5} alt={title} 
-      class={css({w: "100%", opacity: 1, objectFit: "cover"})}
-    />
-    { imageCredit && <UnsplashCredit author={imageCredit.author} authorUrl={imageCredit.authorUrl}/>}
-      <div class={css({mb: "1.5rem"})}>
-        <div class={css({fontSize:"xxx-large"})}>{title}</div>
-        <div class={css({fontSize: "large"})}>
-          <FormattedDate date={publishDate}/>
-          {
-            updatedDate && (
-              <span>
-                <span>更新日:</span>
-                <FormattedDate date={updatedDate} />
-              </span>
+    <div class={css({fontSize:"xxx-large"})}>{title}</div>
+    <div class={css({fontSize: "large"})}>
+      <FormattedDate date={publishDate}/>
+      {
+        updatedDate && (
+          <span>
+            <span>更新日:</span>
+            <FormattedDate date={updatedDate} />
+            </span>
             )
           }
-        </div>
-      </div>
-      <article>
-        <slot />
-      </article>
+    </div>
+    <div class={css({my: "1.5rem"})}>
+      <Image 
+        src={coverImage}
+        alt={title} 
+        width={coverImage.width / 1.5}
+        height={coverImage.height / 1.5}
+        class={css({w: "100%", opacity: 1, objectFit: "cover"})}
+      />
+      { imageCredit && <UnsplashCredit author={imageCredit.author} authorUrl={imageCredit.authorUrl}/>}
+    </div>
+    <article>
+      <slot />
+    </article>
   </body>
 </Layout>
