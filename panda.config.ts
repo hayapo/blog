@@ -2,6 +2,7 @@ import { defineConfig } from "@pandacss/dev";
 
 export default defineConfig({
   preflight: true,
+  jsxFramework: "preact",
   // define the content to scan 👇🏻
   include: [
     "./src/**/*.{ts,tsx,js,jsx,astro}",
@@ -11,7 +12,8 @@ export default defineConfig({
   outdir: "styled-system",
 
   conditions: {
-    dark: ".dark &, [data-theme='dark'] &",
+    light: ".light &",
+    dark: ".dark &",
     sr_only: ".sr-only",
   },
 
@@ -20,7 +22,7 @@ export default defineConfig({
       colors: {
         text: {
           value: {
-            base: "black",
+            _light: "black",
             _dark: "white",
           },
         },
@@ -38,7 +40,7 @@ export default defineConfig({
         },
         background: {
           value: {
-            base: "#FFF",
+            _light: "#FFF",
             _dark: "#242424",
           },
         },

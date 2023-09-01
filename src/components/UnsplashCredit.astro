@@ -10,13 +10,11 @@ const { author, authorUrl } = Astro.props
 const UNSPLASH_URL = 'https://unsplash.com'
 ---
 
-<div>
-  <span>Photo by</span>
-  <ExternalLink href={authorUrl} title={author} >
-    {author}
-  </ExternalLink>
-  <span>on</span>
-  <ExternalLink href={UNSPLASH_URL} title="Unsplash">
-    Unsplash
-  </ExternalLink>
-</div>
+<span>Photo by </span>
+<ExternalLink href={authorUrl} title={author} >
+  {author}
+</ExternalLink>
+<span> on </span>
+<ExternalLink href={UNSPLASH_URL} title="Unsplash">
+  Unsplash
+</ExternalLink>
