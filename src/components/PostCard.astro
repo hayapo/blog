@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import { css } from '../../styled-system/css';
 import { Image } from 'astro:assets';
 import FormattedDate from './FormattedDate.astro';
+import { MarkdownLayoutProps } from 'astro';
 
 interface Props {
   frontmatter: CollectionEntry<"blog">["data"]

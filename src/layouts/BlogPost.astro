@@ -8,10 +8,17 @@ import UnsplashCredit from "../components/UnsplashCredit.astro";
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const {title, description, publishDate, updatedDate, coverImage, imageCredit} = Astro.props
+const {
+  title,
+  description,
+  publishDate,
+  updatedDate,
+  coverImage,
+  imageCredit
+} = Astro.props
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} image={coverImage.src}>
   <body>
     <div class={css({fontSize:"xxx-large"})}>{title}</div>
     <div class={css({fontSize: "large"})}>
