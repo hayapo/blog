@@ -2,5 +2,8 @@
   "parser": {
     ".astro$": "@markuplint/astro-parser"
   },
-  "extends": ["markuplint:recommended"]
+  "extends": ["markuplint:recommended"],
+  "rules": {
+    "character-reference": false
+  }
 }

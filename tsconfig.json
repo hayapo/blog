@@ -1,11 +1,15 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [
-    "src",
-    "styled-system"
-  ],
+  "include": ["styled-system"],
   "compilerOptions": {
+    "moduleResolution": "Node",
+    "noEmit": true,
+    "strictNullChecks": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "preact"
+    "jsxImportSource": "preact",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   }
 }

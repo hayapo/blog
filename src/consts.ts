@@ -10,14 +10,3 @@ export const POST_TAGS = [
   "Vite",
   "Tailwind",
 ] as const;
-
-export const MOBILE_DEVICES = [
-  "Android",
-  "webOS",
-  "iPhone",
-  "iPad",
-  "iPod",
-  "BlackBerry",
-  "IEMobile",
-  "Opera Mini",
-];

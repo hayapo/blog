@@ -13,17 +13,16 @@
     "markuplint:mdx": "markuplint --config .markuplintrc.json \"./src/content/blog/**/*.{mdx}\""
   },
   "dependencies": {
-    "@astrojs/mdx": "^0.19.7",
-    "@astrojs/preact": "^2.2.2",
-    "astro": "^2.10.12",
+    "@astrojs/mdx": "^1.0.0",
+    "@astrojs/preact": "^3.0.0",
+    "astro": "^3.0.3",
     "astro-icon": "^0.8.1",
-    "preact": "^10.6.5",
-    "react-device-detect": "^2.2.3"
+    "preact": "^10.6.5"
   },
   "devDependencies": {
     "@markuplint/astro-parser": "^3.9.0",
-    "@pandacss/astro": "^0.11.1",
-    "@pandacss/dev": "^0.11.1",
+    "@pandacss/astro": "^0.13.1",
+    "@pandacss/dev": "^0.13.1",
     "markuplint": "^3.12.0"
   }
 }
