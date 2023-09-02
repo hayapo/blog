@@ -3,6 +3,7 @@ import { css } from "../../../styled-system/css";
 import { IconButton } from "./IconButton";
 
 export default function ThemeSwitch() {
+<<<<<<< HEAD
   // function initialThemeIsDark() {
   //   const theme = localStorage.getItem("theme");
   //   if (theme) {
@@ -26,6 +27,8 @@ export default function ThemeSwitch() {
   //   }
   // }
 
+=======
+>>>>>>> 862bfe9f98381a41d93eaf48761a2157bffcdd67
   const [theme, setTheme] = useState(() => {
     if (import.meta.env.SSR) {
       return undefined;
