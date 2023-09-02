@@ -4,7 +4,6 @@ import { getBlogEntries } from '../utils/blog';
 import type { CollectionEntry } from 'astro:content';
 import { css } from '../../styled-system/css';
 import Layout from '../layouts/Layout.astro';
-import LatestPost from '../components/LatestPost.astro';
 import ArticleCard from '../components/PostCard.astro';
 import Pagenation from '../components/Pagenation.astro';
 
@@ -31,7 +30,7 @@ const articleListStyle = css({
 
 ---
 
-<Layout title="Home" description="Blog Home">
+<Layout>
 	<ul class={articleListStyle}>
 		{
 			page.data.map(({data, slug})=> (
