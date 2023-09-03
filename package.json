@@ -9,8 +9,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "prepare": "panda codegen",
-    "markuplint:astro": "markuplint --config .markuplintrc.json \"./src/**/*.{astro}\"",
-    "markuplint:mdx": "markuplint --config .markuplintrc.json \"./src/content/blog/**/*.{mdx}\""
+    "lint": "eslint --ext .astro,.js,.ts,.tsx src",
+    "markuplint": "markuplint --config .markuplintrc.ts \"./src/**/*.{astro, mdx}\"",
+    "format": "prettier --write --plugin=prettier-plugin-astro ."
   },
   "dependencies": {
     "@astrojs/mdx": "^1.0.0",
@@ -21,8 +22,16 @@
   },
   "devDependencies": {
     "@markuplint/astro-parser": "^3.9.0",
+    "@markuplint/ml-config": "^3.11.0",
     "@pandacss/astro": "^0.13.1",
     "@pandacss/dev": "^0.13.1",
-    "markuplint": "^3.12.0"
+    "@typescript-eslint/eslint-plugin": "^6.5.0",
+    "@typescript-eslint/parser": "^6.5.0",
+    "astro-eslint-parser": "^0.15.0",
+    "eslint": "^8.48.0",
+    "eslint-plugin-astro": "^0.29.0",
+    "markuplint": "^3.12.0",
+    "prettier": "^3.0.3",
+    "prettier-plugin-astro": "^0.12.0"
   }
 }
