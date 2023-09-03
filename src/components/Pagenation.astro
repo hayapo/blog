@@ -1,6 +1,6 @@
 ---
-import { Sprite } from 'astro-icon';
-import { css } from '../../styled-system/css';
+import { Sprite } from "astro-icon";
+import { css } from "../../styled-system/css";
 
 interface Props {
   prev?: string;
@@ -8,30 +8,59 @@ interface Props {
 }
 
 const { prev, next } = Astro.props;
-
 ---
 
 <Sprite.Provider>
-  <div class={css({display: "flex", justifyContent: "space-between", mt: "auto"})}>
-      {
-        prev ? (
-          <a href={prev} title="prev page" class={css({fontWeight: "bold", display: "flex", alignItems: "center", _hover: { color: "accent" }})}>
-            <Sprite name="ic:twotone-arrow-back" class={css({mr: 2, w: "1.5rem", h: "1.5rem"})} />
-            <span>Back</span>
-          </a>
-        ) : (
-          <div />
-          )
-      }
-      {
-        next ? (
-          <a href={next} title="next page" class={css({fontWeight: "bold", display: "flex", alignItems: "center", _hover: { color: "accent" }})}>
-            <span>Next</span>
-            <Sprite name="ic:twotone-arrow-forward" class={css({ml: 2, w: "1.5rem", h: "1.5rem"})} />
-          </a>
-        ) : (
-          <div />
-        )
-      }
+  <div
+    class={css({
+      display: "flex",
+      justifyContent: "space-between",
+      mt: "auto",
+    })}
+  >
+    {
+      prev ? (
+        <a
+          href={prev}
+          title="prev page"
+          class={css({
+            fontWeight: "bold",
+            display: "flex",
+            alignItems: "center",
+            _hover: { color: "accent" },
+          })}
+        >
+          <Sprite
+            name="ic:twotone-arrow-back"
+            class={css({ mr: 2, w: "1.5rem", h: "1.5rem" })}
+          />
+          <span>Back</span>
+        </a>
+      ) : (
+        <div />
+      )
+    }
+    {
+      next ? (
+        <a
+          href={next}
+          title="next page"
+          class={css({
+            fontWeight: "bold",
+            display: "flex",
+            alignItems: "center",
+            _hover: { color: "accent" },
+          })}
+        >
+          <span>Next</span>
+          <Sprite
+            name="ic:twotone-arrow-forward"
+            class={css({ ml: 2, w: "1.5rem", h: "1.5rem" })}
+          />
+        </a>
+      ) : (
+        <div />
+      )
+    }
   </div>
 </Sprite.Provider>

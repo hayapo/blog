@@ -1,42 +1,41 @@
 ---
-import type { Page, GetStaticPathsOptions } from 'astro';
-import { getBlogEntries } from '../utils/blog';
-import type { CollectionEntry } from 'astro:content';
-import { css } from '../../styled-system/css';
-import Layout from '../layouts/Layout.astro';
-import ArticleCard from '../components/PostCard.astro';
-import Pagenation from '../components/Pagenation.astro';
+import type { Page, GetStaticPathsOptions } from "astro";
+import { getBlogEntries } from "../utils/blog";
+import type { CollectionEntry } from "astro:content";
+import { css } from "../../styled-system/css";
+import Layout from "../layouts/Layout.astro";
+import ArticleCard from "../components/PostCard.astro";
+import Pagenation from "../components/Pagenation.astro";
 
-export async function getStaticPaths({paginate}: GetStaticPathsOptions) {
-  return paginate(await getBlogEntries(), {pageSize: 9})
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  return paginate(await getBlogEntries(), { pageSize: 9 });
 }
 
 const { page } = Astro.props as {
   page: Page<CollectionEntry<"blog">>;
-}
+};
 
 const articleListStyle = css({
-	m: 0,
-	p: 0,
-	listStyle: "none",
-	display: "grid",
-	gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-	gap: "1rem",
-	md: {
-		gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-		gap: "1.5rem"
-	},
-})
-
+  m: 0,
+  p: 0,
+  listStyle: "none",
+  display: "grid",
+  gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+  gap: "1rem",
+  md: {
+    gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+    gap: "1.5rem",
+  },
+});
 ---
 
 <Layout>
-	<ul class={articleListStyle}>
-		{
-			page.data.map(({data, slug})=> (
-				<ArticleCard frontmatter={data} slug={slug} />
-			))
-		}
-	</ul>
-	<Pagenation prev={page.url.prev} next={page.url.next} />
+  <ul class={articleListStyle}>
+    {
+      page.data.map(({ data, slug }) => (
+        <ArticleCard frontmatter={data} slug={slug} />
+      ))
+    }
+  </ul>
+  <Pagenation prev={page.url.prev} next={page.url.next} />
 </Layout>

@@ -1,12 +1,12 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { css } from "../../styled-system/css";
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 import Layout from "./Layout.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import UnsplashCredit from "../components/UnsplashCredit.astro";
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<"blog">["data"];
 
 const {
   title,
@@ -14,33 +14,40 @@ const {
   publishDate,
   updatedDate,
   coverImage,
-  imageCredit
-} = Astro.props
+  imageCredit,
+} = Astro.props;
 ---
 
 <Layout title={title} description={description} image={coverImage.src}>
   <body>
-    <div class={css({fontSize:"xxx-large"})}>{title}</div>
-    <div class={css({fontSize: "large"})}>
-      <FormattedDate date={publishDate}/>
+    <div class={css({ fontSize: "xxx-large" })}>{title}</div>
+    <div class={css({ fontSize: "large" })}>
+      <FormattedDate date={publishDate} />
       {
         updatedDate && (
           <span>
             <span>更新日:</span>
             <FormattedDate date={updatedDate} />
-            </span>
-            )
-          }
+          </span>
+        )
+      }
     </div>
-    <div class={css({my: "1.5rem"})}>
-      <Image 
+    <div class={css({ my: "1.5rem" })}>
+      <Image
         src={coverImage}
-        alt={title} 
+        alt={title}
         width={coverImage.width / 1.5}
         height={coverImage.height / 1.5}
-        class={css({w: "100%", opacity: 1, objectFit: "cover"})}
+        class={css({ w: "100%", opacity: 1, objectFit: "cover" })}
       />
-      { imageCredit && <UnsplashCredit author={imageCredit.author} authorUrl={imageCredit.authorUrl}/>}
+      {
+        imageCredit && (
+          <UnsplashCredit
+            author={imageCredit.author}
+            authorUrl={imageCredit.authorUrl}
+          />
+        )
+      }
     </div>
     <article>
       <slot />

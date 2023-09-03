@@ -1,20 +1,18 @@
 ---
-import ExternalLink from './ExternalLink.astro'
+import ExternalLink from "./ExternalLink.astro";
 
 interface Props {
   author: string;
   authorUrl: string;
 }
 
-const { author, authorUrl } = Astro.props
-const UNSPLASH_URL = 'https://unsplash.com'
+const { author, authorUrl } = Astro.props;
+const UNSPLASH_URL = "https://unsplash.com";
 ---
 
-<span>Photo by </span>
-<ExternalLink href={authorUrl} title={author} >
+<span>Photo by</span>
+<ExternalLink href={authorUrl} title={author}>
   {author}
 </ExternalLink>
-<span> on </span>
-<ExternalLink href={UNSPLASH_URL} title="Unsplash">
-  Unsplash
-</ExternalLink>
+<span> on</span>
+<ExternalLink href={UNSPLASH_URL} title="Unsplash">Unsplash</ExternalLink>

@@ -11,22 +11,21 @@ interface Props {
   image?: string;
 }
 
-const {title, description, image} = Astro.props;
+const { title, description, image } = Astro.props;
 
 const siteTitle = title ?? SITE_TITLE;
 const siteDescription = description ?? SITE_DESCRIPTION;
 const ogImage = new URL(image ?? "/ogp.webp", Astro.url.origin);
-
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-  <Head title={siteTitle}, description={siteDescription} image={ogImage}/>
-	<body >
-		<Header />
-		<main>
-			<slot />
-		</main>
+  <Head title={siteTitle} description={siteDescription} image={ogImage} />
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
     <Footer />
-	</body>
+  </body>
 </html>

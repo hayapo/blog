@@ -3,29 +3,6 @@ import { css } from "../../../styled-system/css";
 import { IconButton } from "./IconButton";
 
 export default function ThemeSwitch() {
-  // function initialThemeIsDark() {
-  //   const theme = localStorage.getItem("theme");
-  //   if (theme) {
-  //     return theme === "dark";
-  //   } else {
-  //     return window.matchMedia("(prefers-color-scheme: dark)").matches;
-  //   }
-  // }
-
-  // let isDark = import.meta.env.SSR ? undefined : initialThemeIsDark();
-
-  // function handleChange() {
-  //   if (!isDark) {
-  //     isDark = true;
-  //     localStorage.setItem("theme", "dark");
-  //     document.documentElement.classList.add("dark");
-  //   } else {
-  //     isDark = false;
-  //     localStorage.setItem("theme", "light");
-  //     document.documentElement.classList.remove("dark");
-  //   }
-  // }
-
   const [theme, setTheme] = useState(() => {
     if (import.meta.env.SSR) {
       return undefined;
@@ -37,7 +14,7 @@ export default function ThemeSwitch() {
 
   function handleChange(buttonTheme: string) {
     const matchesDarkTheme = window.matchMedia(
-      "(prefers-color-scheme: dark)"
+      "(prefers-color-scheme: dark)",
     ).matches;
 
     if (

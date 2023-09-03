@@ -11,6 +11,6 @@ export async function getBlogEntries() {
 
 export function sortBlogEntriesByDate(collections: Collections) {
   return collections.sort(
-    (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+    (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
   );
 }

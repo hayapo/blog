@@ -1,29 +1,30 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import { css } from '../../styled-system/css';
-import { Image } from 'astro:assets';
-import FormattedDate from './FormattedDate.astro';
-import { MarkdownLayoutProps } from 'astro';
+import type { CollectionEntry } from "astro:content";
+import { css } from "../../styled-system/css";
+import { Image } from "astro:assets";
+import FormattedDate from "./FormattedDate.astro";
+import { MarkdownLayoutProps } from "astro";
 
 interface Props {
-  frontmatter: CollectionEntry<"blog">["data"]
-  slug: string
+  frontmatter: CollectionEntry<"blog">["data"];
+  slug: string;
 }
 
-const { frontmatter, slug } = Astro.props
-
+const { frontmatter, slug } = Astro.props;
 ---
 
-<li class:list={css({
-  position: "relative",
-  height: "100%",
-  border: "1px solid var(--colors-accent2)",
-  borderRadius: "0.7rem",
-  _hover: {
-    boxShadow: "0 0 0 3px var(--colors-accent)",
-    border: "none",
-  },
-  })}>
+<li
+  class:list={css({
+    position: "relative",
+    height: "100%",
+    border: "1px solid var(--colors-accent2)",
+    borderRadius: "0.7rem",
+    _hover: {
+      boxShadow: "0 0 0 3px var(--colors-accent)",
+      border: "none",
+    },
+  })}
+>
   <a
     href={`/${slug}`}
     title={frontmatter.title}
@@ -31,24 +32,31 @@ const { frontmatter, slug } = Astro.props
       display: "flex",
       flexDirection: "column",
       justifyContent: "space-between",
-      gap: {base: "0.7rem", sm: "1.0rem"},
+      gap: { base: "0.7rem", sm: "1.0rem" },
       _focusVisible: {
         outline: "none",
         boxShadow: "0 0 0 5px var(--colors-accent)",
         border: "none",
-        rounded: "0.7rem"
+        rounded: "0.7rem",
       },
     })}
-    >
+  >
     <Image
       src={frontmatter.coverImage}
       alt={frontmatter.title}
       width={frontmatter.coverImage.width}
       height={frontmatter.coverImage.height}
-      class={css({w: "100%",h: {base: "130px", md: "150px", lg: "200px"}, objectFit: "cover", roundedTop: "0.7rem"})}
+      class={css({
+        w: "100%",
+        h: { base: "130px", md: "150px", lg: "200px" },
+        objectFit: "cover",
+        roundedTop: "0.7rem",
+      })}
     />
-    <div class={css({ pb: "1rem", px: "1rem"})}>
-      <div class={css({fontSize: "large", fontWeight: "bold"})} >{frontmatter.title}</div>
+    <div class={css({ pb: "1rem", px: "1rem" })}>
+      <div class={css({ fontSize: "large", fontWeight: "bold" })}>
+        {frontmatter.title}
+      </div>
       <FormattedDate date={frontmatter.publishDate} />
     </div>
   </a>
