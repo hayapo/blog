@@ -25,6 +25,7 @@
     "@markuplint/ml-config": "^3.11.0",
     "@pandacss/astro": "^0.13.1",
     "@pandacss/dev": "^0.13.1",
+    "@playwright/test": "^1.37.1",
     "@typescript-eslint/eslint-plugin": "^6.5.0",
     "@typescript-eslint/parser": "^6.5.0",
     "astro-eslint-parser": "^0.15.0",
