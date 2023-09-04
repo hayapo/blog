@@ -1,4 +1,4 @@
-import { css } from "../../../styled-system/css";
+import { css } from "root/styled-system/css";
 
 interface Props {
   theme: "light" | "dark";

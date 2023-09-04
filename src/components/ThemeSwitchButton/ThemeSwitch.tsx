@@ -1,5 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
-import { css } from "../../../styled-system/css";
+import { css } from "root/styled-system/css";
 import { IconButton } from "./IconButton";
 
 export default function ThemeSwitch() {

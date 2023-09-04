@@ -1,10 +1,10 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { css } from "../../styled-system/css";
+import { css } from "root/styled-system/css";
 import { Image } from "astro:assets";
-import Layout from "./Layout.astro";
-import FormattedDate from "../components/FormattedDate.astro";
-import UnsplashCredit from "../components/UnsplashCredit.astro";
+import Layout from "@/layouts/Layout.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
+import UnsplashCredit from "@/components/UnsplashCredit.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 

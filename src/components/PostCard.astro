@@ -1,9 +1,8 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { css } from "../../styled-system/css";
+import { css } from "root/styled-system/css";
 import { Image } from "astro:assets";
-import FormattedDate from "./FormattedDate.astro";
-import { MarkdownLayoutProps } from "astro";
+import FormattedDate from "@/components/FormattedDate.astro";
 
 interface Props {
   frontmatter: CollectionEntry<"blog">["data"];

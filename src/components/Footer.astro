@@ -1,41 +1,12 @@
 ---
-import { css } from "../../styled-system/css";
+import { css } from "root/styled-system/css";
 import { Sprite } from "astro-icon";
-import ExternalLink from "./ExternalLink.astro";
+import ExternalLink from "@/components/ExternalLink.astro";
+import { SITE_REPOSITORY_URL } from "@/consts.ts";
 
 const today = new Date();
 
 const ICON_SIZE = "2.0rem";
-const ICON_SIZE_MOBILE = "1.5rem";
-
-const footerIcons = [
-  {
-    name: "Twitter",
-    icon: "mdi:twitter",
-    url: "https://x.com/hayapo_hip",
-    label: "Link to Twitter",
-  },
-  {
-    name: "Mastodon",
-    icon: "mdi:mastodon",
-    url: "https://mstdn.jp/@hayapo",
-    label: "Link to Mastodon.jp",
-  },
-  {
-    name: "Discord",
-    icon: "ic:baseline-discord",
-    url: "https://discord.com/channels/@hayato",
-    label: "Link to Discord",
-  },
-];
-
-const footerLinkStyle = css({
-  color: "inherit",
-  textDecoration: "underline",
-  "&:hover": {
-    color: "accent",
-  },
-});
 ---
 
 <footer
@@ -58,40 +29,20 @@ const footerLinkStyle = css({
     This site is powered by
     <ExternalLink href="https://astro.build/" title="Astro">Astro</ExternalLink>
   </div>
-  <div>
-    <ExternalLink href="https://github.com/hayapo/hayapo_blog" title="Github">
-      Github
+  <Sprite.Provider>
+    <ExternalLink href={SITE_REPOSITORY_URL} title="Github">
+      <Sprite
+        name="mdi:github"
+        size={ICON_SIZE}
+        class={css({
+          justifyContent: "center",
+          alignItems: "center",
+          color: { base: "#646464", _dark: "#B3B3B3" },
+          _hover: {
+            color: { base: "#000000", _dark: "#FFFFFF" },
+          },
+        })}
+      />
     </ExternalLink>
-  </div>
-  <!-- <div class={css({
-    display: "flex",
-    gap: "2rem",
-  })}>
-    <Sprite.Provider>
-      {footerIcons.map((icon) => {
-        return (
-          <span class="sr-only">Go to {icon.label}</span>
-          <a
-            href={icon.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            title={icon.label}
-          >
-            <Sprite 
-              name={icon.icon}
-              label={icon.label}
-              class={css({
-                color: { base: "#646464", _dark: "#B3B3B3", _hover: "accent" },
-                w: ICON_SIZE_MOBILE,
-                h: ICON_SIZE_MOBILE,
-                md: {
-                  w: ICON_SIZE,
-                  h: ICON_SIZE,
-                }
-              })}/>
-          </a>
-        )
-      })}
-    </Sprite.Provider>
-  </div> -->
+  </Sprite.Provider>
 </footer>

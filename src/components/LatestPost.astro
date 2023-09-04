@@ -1,9 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { Image } from "astro:assets";
-import { css } from "../../styled-system/css";
-import { gridItem } from "../../styled-system/patterns";
-import FormattedDate from "./FormattedDate.astro";
+import { css } from "root/styled-system/css";
+import { gridItem } from "root/styled-system/patterns";
+import FormattedDate from "@/components/FormattedDate.astro";
 
 interface Props {
   post: CollectionEntry<"blog">;
