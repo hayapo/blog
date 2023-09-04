@@ -50,6 +50,9 @@ export default defineConfig({
       sizes: {
         header: { value: "5rem" },
       },
+      fonts: {
+        code: { value: "consolas, monaco, monospace" },
+      },
     },
   },
 
@@ -191,8 +194,8 @@ export default defineConfig({
         fontStyle: "italic",
       },
       code: {
+        fontFamily: "code",
         fontSizes: "xx-large",
-        fontWeight: "bold",
         backgroundColor: { base: "#CACACA", _dark: "#1A1A1A" },
         px: "0.3rem",
         py: "0.1rem",
@@ -200,6 +203,7 @@ export default defineConfig({
         borderRadius: "0.3rem",
       },
       pre: {
+        fontFamily: "code",
         "& > code": { all: "unset" },
         _dark: {
           "& > code": { all: "unset" },
