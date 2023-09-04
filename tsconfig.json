@@ -1,27 +1,12 @@
 {
   "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "lib": ["ESNext", "DOM"],
-    "allowJs": true,
-    "noImplicitAny": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
       "root/*": ["./*"]
-    },
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact",
-    "exactOptionalPropertyTypes": false
+    }
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.js",
-    "src/**/*.jsx",
-    "src/**/*.astro",
-    "tests/**/*.ts"
-  ],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src/**/*", "test", "panda.config.ts"],
+  "exclude": ["dist"]
 }
