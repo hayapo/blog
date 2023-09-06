@@ -1,0 +1,62 @@
+---
+import { css } from "root/styled-system/css";
+import { Sprite } from "astro-icon";
+import { Image } from "astro:assets";
+import { SITE_TITLE } from "@/consts";
+import hatebu from "root/public/hatebu.webp";
+import ShareButton from "./ShareButton.astro";
+
+interface Props {
+  title: string;
+  url: string;
+}
+
+const { title, url } = Astro.props;
+
+const titleShareText = `${title} - ${SITE_TITLE}`;
+
+const trimedCurrentUrl = url.replace(/^https:\/\//, "");
+
+const twitterShareUrl = `https://x.com/share?url=${url}&text=${titleShareText}`;
+const hatbuBookmarkUrl = `https://b.hatena.ne.jp/entry/s/${trimedCurrentUrl}##bbutton`;
+
+const twitterIconSize = 20;
+const hatenaIconSize = twitterIconSize + 5;
+---
+
+<div
+  class={css({
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "1.5rem",
+  })}
+>
+  <ShareButton
+    href={twitterShareUrl}
+    text="ツイート"
+    bgColor={css({ bg: "twitterBlue" })}
+  >
+    <Sprite
+      name="mdi:twitter"
+      class={css({
+        color: "twitterWhite",
+        w: twitterIconSize,
+        h: twitterIconSize,
+      })}
+    />
+  </ShareButton>
+  <ShareButton
+    href={hatbuBookmarkUrl}
+    text="ブックマーク"
+    bgColor={css({ bg: "hatebuBlue" })}
+    isHatena
+  >
+    <Image
+      src={hatebu}
+      alt="hatebu"
+      width={hatenaIconSize}
+      height={hatenaIconSize}
+    />
+  </ShareButton>
+</div>

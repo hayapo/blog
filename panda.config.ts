@@ -12,7 +12,6 @@ export default defineConfig({
   outdir: "styled-system",
 
   conditions: {
-    light: ".light &",
     dark: ".dark &",
     sr_only: ".sr-only",
   },
@@ -22,7 +21,7 @@ export default defineConfig({
       colors: {
         text: {
           value: {
-            _light: "black",
+            base: "black",
             _dark: "white",
           },
         },
@@ -38,10 +37,45 @@ export default defineConfig({
             _dark: "#797979",
           },
         },
+        accent3: {
+          value: {
+            base: "#CACACA",
+            _dark: "#1A1A1A",
+          },
+        },
         background: {
           value: {
-            _light: "#FFF",
+            base: "#FFF",
             _dark: "#242424",
+          },
+        },
+        iconDefault: {
+          value: {
+            base: "#444444",
+            _dark: "#FFF",
+          },
+        },
+        iconHover: {
+          value: {
+            base: "#000",
+            _dark: "#FFF",
+          },
+        },
+        githubThemed: {
+          value: {
+            base: "#444444",
+            _dark: "#FFFFFF",
+          },
+        },
+        hatebuBlue: {
+          value: "#00A4DE",
+        },
+        twitterWhite: {
+          value: "#FFFFFF",
+        },
+        twitterBlue: {
+          value: {
+            base: "#1d9bf1ff",
           },
         },
       },
@@ -85,7 +119,7 @@ export default defineConfig({
       flex: 1,
       m: "auto",
       px: { base: "0.5rem", sm: "2.5rem" },
-      py: "1.0rem",
+      py: "2.0rem",
       maxWidth: "calc(100% - 15px)",
       width: "1160px",
     },
@@ -173,6 +207,7 @@ export default defineConfig({
       border: "1px solid",
     },
     hr: {
+      mt: "1.0rem",
       border: "none",
       borderTop: "1px solid #ddd",
     },
