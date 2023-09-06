@@ -3,26 +3,25 @@ import { css } from "root/styled-system/css";
 import { Sprite } from "astro-icon";
 import ExternalLink from "@/components/ExternalLink.astro";
 import { SITE_REPOSITORY_URL } from "@/consts.ts";
+import Icon from "@/components/Icon.astro";
 
 const today = new Date();
 
-const ICON_SIZE = "2.0rem";
+const footerStye = css({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "0.5rem",
+  p: { base: "2rem 2rem", sm: "2rem 3rem" },
+  backgroundColor: { base: "#CACACA", _dark: "#1A1A1A" },
+  color: { base: "#525252", _dark: "#B3B3B3" },
+  fontSize: { base: "small", sm: "large" },
+  fontFamily: "code",
+});
 ---
 
-<footer
-  class={css({
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "0.5rem",
-    p: { base: "2rem 2rem", sm: "2rem 3rem" },
-    backgroundColor: { base: "#CACACA", _dark: "#1A1A1A" },
-    color: { base: "#525252", _dark: "#B3B3B3" },
-    fontSize: { base: "medium", sm: "large" },
-    fontFamily: "code",
-  })}
->
+<footer class={footerStye}>
   <div>
     &copy; {today.getFullYear()} hayapo. All rights reserved.
   </div>
@@ -30,33 +29,16 @@ const ICON_SIZE = "2.0rem";
     This site is powered by
     <ExternalLink href="https://astro.build/" title="Astro">Astro</ExternalLink>
   </div>
-  <div class={css({ display: "flex", gap: "1.0rem" })}>
-    <Sprite.Provider>
-      <ExternalLink href={SITE_REPOSITORY_URL} title="Github">
-        <Sprite
-          name="mdi:github"
-          size={ICON_SIZE}
-          class={css({
-            justifyContent: "center",
-            alignItems: "center",
-            color: { base: "#646464", _dark: "#B3B3B3" },
-            _hover: {
-              color: { base: "#000000", _dark: "#FFFFFF" },
-            },
-          })}
-        />
-      </ExternalLink>
-      <ExternalLink href="/rss.xml" title="RSS Feed">
-        <Sprite
-          name="mdi:rss"
-          class={css({
-            w: { base: "1.8rem", sm: "2.0rem" },
-            h: { base: "1.8rem", sm: "2.0rem" },
-            color: { base: "#646464", _dark: "#B3B3B3" },
-            _hover: { color: "accent" },
-          })}
-        />
-      </ExternalLink>
-    </Sprite.Provider>
+  <div class={css({ display: "flex", gap: "1.0rem", alignItems: "center" })}>
+    <Icon
+      href={SITE_REPOSITORY_URL}
+      title="Link to Github"
+      color={css({ color: "githubThemed" })}
+    >
+      <Sprite name="mdi:github" />
+    </Icon>
+    <Icon href="/rss.xml" title="RSS feed">
+      <Sprite name="mdi:rss" />
+    </Icon>
   </div>
 </footer>

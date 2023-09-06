@@ -1,0 +1,41 @@
+---
+import { css } from "root/styled-system/css";
+
+interface Props {
+  href: string;
+  title: string;
+  size?: string;
+  color?: string;
+}
+
+const ICON_SIZE = "2.0rem";
+const MOBILE_ICON_SIZE = "1.5rem";
+
+const { href, title, size = ICON_SIZE, color } = Astro.props;
+---
+
+<a
+  href={href}
+  title={`Link to ${title}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  class:list={[
+    css({
+      color: color ?? "iconDefault",
+      _hover: {
+        filter: { base: "brightness(0.7)", _dark: "brightness(0.5)" },
+      },
+    }),
+    color,
+  ]}
+>
+  <svg
+    class={css({
+      w: { base: MOBILE_ICON_SIZE, sm: size },
+      h: { base: MOBILE_ICON_SIZE, sm: size },
+    })}
+    viewBox="0 0 24 24"
+  >
+    <slot />
+  </svg>
+</a>
