@@ -1,0 +1,58 @@
+---
+import { css } from "root/styled-system/css";
+
+type Props = {
+  href: string;
+  text: string;
+  bgColor: string;
+  isHatena?: boolean;
+};
+
+const { href, text, bgColor, isHatena } = Astro.props;
+
+const size = 35;
+
+const defaultStyle = css({ px: 7, gap: 5 });
+
+const hatenaStyle = css({ pl: 4, pr: 7, gap: 0 });
+---
+
+<a
+  href={href}
+  title={`この記事を${text}する`}
+  target="_blank"
+  rel="noopener noreferrer"
+  role="button"
+>
+  <div
+    class:list={[
+      css({
+        h: size,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontWeight: "bold",
+        rounded: "5px",
+        _hover: {
+          filter: { base: "brightness(0.8)", _dark: "brightness(0.5)" },
+        },
+      }),
+      bgColor,
+      isHatena ? hatenaStyle : defaultStyle,
+    ]}
+  >
+    <slot />
+    <span
+      class={css({
+        color: "white",
+        lineHeight: "100%",
+        justifyContent: "center",
+        alignItems: "center",
+        fontSize: "medium",
+        fontWeight: "bold",
+      })}
+    >
+      {text}
+    </span>
+  </div>
+</a>
