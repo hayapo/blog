@@ -18,7 +18,10 @@ export function GET() {
       link: `/${post.slug}`,
       customData: `
       <enclosure url="
-        ${import.meta.env.SITE}${post.data.coverImage.src}">
+        ${import.meta.env.SITE}${post.data.coverImage.src}"
+        length="${post.data.coverImage.width * post.data.coverImage.height}"
+        type="image/${post.data.coverImage.format}"
+        >
       </enclosure>
       `,
     })),
