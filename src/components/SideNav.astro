@@ -1,0 +1,25 @@
+---
+import { css } from "root/styled-system/css";
+---
+
+<!-- TODO: タブレットでのサイドバーの表示をもっと良くする(スペースが足りなくて目次が見にくいので現在はMobileの目次にしている) -->
+<aside
+  class={css({
+    top: "10rem",
+    position: "sticky",
+    display: { base: "none", lg: "flex" },
+    flexDirection: "column",
+  })}
+>
+  <div
+    class={css({
+      backgroundColor: "accent-background",
+      color: "accent-background-text",
+      gap: "2rem",
+      p: "2rem",
+      rounded: "0.7em",
+    })}
+  >
+    <slot />
+  </div>
+</aside>

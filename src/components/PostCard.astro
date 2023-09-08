@@ -16,7 +16,8 @@ const { frontmatter, slug } = Astro.props;
   class:list={css({
     position: "relative",
     height: "100%",
-    border: "1px solid var(--colors-accent2)",
+    border: "1px solid",
+    borderColor: "borderAccent",
     borderRadius: "0.7rem",
     _hover: {
       boxShadow: "0 0 0 3px var(--colors-accent)",
@@ -53,7 +54,15 @@ const { frontmatter, slug } = Astro.props;
       })}
     />
     <div class={css({ pb: "1rem", px: "1rem" })}>
-      <div class={css({ fontSize: "large", fontWeight: "bold" })}>
+      <div
+        class={css({
+          fontSize: "large",
+          fontWeight: "bold",
+          maxHeight: "4rem",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+        })}
+      >
         {frontmatter.title}
       </div>
       <FormattedDate date={frontmatter.publishDate} />

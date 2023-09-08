@@ -9,9 +9,10 @@ import ShareButton from "./ShareButton.astro";
 interface Props {
   title: string;
   url: string;
+  className?: string;
 }
 
-const { title, url } = Astro.props;
+const { title, url, className } = Astro.props;
 
 const titleShareText = `${title} - ${SITE_TITLE}`;
 
@@ -25,12 +26,15 @@ const hatenaIconSize = twitterIconSize + 5;
 ---
 
 <div
-  class={css({
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "1.5rem",
-  })}
+  class:list={[
+    css({
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "1.5rem",
+    }),
+    className,
+  ]}
 >
   <ShareButton
     href={twitterShareUrl}

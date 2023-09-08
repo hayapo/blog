@@ -31,16 +31,28 @@ export default defineConfig({
             _dark: "#FF7A00",
           },
         },
-        accent2: {
+        "accent-blured": {
+          value: {
+            base: "#6900BF2A",
+            _dark: "#FF7A0058",
+          },
+        },
+        "accent-background": {
+          value: {
+            base: "#e1e1e1",
+            _dark: "#1A1A1A",
+          },
+        },
+        "accent-background-text": {
+          value: {
+            base: "#525252",
+            _dark: "#B3B3B3",
+          },
+        },
+        borderAccent: {
           value: {
             base: "#A6A6A6",
             _dark: "#797979",
-          },
-        },
-        accent3: {
-          value: {
-            base: "#CACACA",
-            _dark: "#1A1A1A",
           },
         },
         background: {
@@ -55,18 +67,6 @@ export default defineConfig({
             _dark: "#FFF",
           },
         },
-        iconHover: {
-          value: {
-            base: "#000",
-            _dark: "#FFF",
-          },
-        },
-        githubThemed: {
-          value: {
-            base: "#444444",
-            _dark: "#FFFFFF",
-          },
-        },
         hatebuBlue: {
           value: "#00A4DE",
         },
@@ -74,14 +74,16 @@ export default defineConfig({
           value: "#FFFFFF",
         },
         twitterBlue: {
-          value: {
-            base: "#1d9bf1ff",
-          },
+          value: "#1d9bf1ff",
         },
       },
     },
     tokens: {
       sizes: {
+        header: { value: "5rem" },
+        full: { value: "100%" },
+      },
+      spacing: {
         header: { value: "5rem" },
       },
       fonts: {
@@ -101,6 +103,7 @@ export default defineConfig({
       fontFamily: "system-ui, sans-serif",
       m: 0,
       p: 0,
+      scrollPaddingTop: "header",
     },
     body: {
       display: "flex",
@@ -109,19 +112,15 @@ export default defineConfig({
       backgroundColor: "background",
       color: "text",
       lineHeight: 1.8,
-      overflowX: "hidden",
       overflowWrap: "break-word",
       wordWrap: "break-word",
     },
     main: {
-      display: "flex",
-      flexDirection: "column",
-      flex: 1,
       m: "auto",
-      px: { base: "0.5rem", sm: "2.5rem" },
+      px: { base: "0.5rem", sm: "1.5rem" },
       py: "2.0rem",
       maxWidth: "calc(100% - 15px)",
-      width: "1160px",
+      width: "1300px",
     },
     h1: {
       fontSize: "39px",
@@ -231,7 +230,7 @@ export default defineConfig({
       code: {
         fontFamily: "code",
         fontSizes: "xx-large",
-        backgroundColor: { base: "#CACACA", _dark: "#1A1A1A" },
+        backgroundColor: { base: "#e1e1e1", _dark: "#1A1A1A" },
         px: "0.3rem",
         py: "0.1rem",
         mx: "0.2rem",

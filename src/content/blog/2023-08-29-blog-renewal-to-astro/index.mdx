@@ -14,7 +14,7 @@ import ExternalLink from "@/components/ExternalLink.astro";
 
 それに合わせてスタイリングも Chakra UI から ずっと触ってみたかった Panda CSS に変更しました。
 
-## なぜ Astro に移行したのか
+# なぜ Astro に移行したのか
 
 以前から Astro を触りたいな―と思っていたり、<cite>Twitter[^1]</cite> などで Astro はいいぞみたいなことを見かけていたので、  
 今回ブログを移行するにあたって Astro にしてみました。
@@ -32,7 +32,7 @@ Next.js との違いとかはドキュメントで詳しく解説されてます
 
 書き味は Next.js とほぼ同じなので、移行はそこまで難しくなかったです。
 
-### MDX でブログを入稿する (Contents Collections)
+## MDX でブログを入稿する (Contents Collections)
 
 ブログを移行するにあたって、今まで microCMS で管理していた記事を MDX で管理・入稿できるようにしました。
 
@@ -135,7 +135,7 @@ export const collections = {
 } as const;
 ```
 
-## Panda CSS に変更した
+# Panda CSS に変更した
 
 以前のブログはスタイリングに Chakra UI を使っていましたが、今回は Panda CSS を使ってみました。
 
@@ -144,7 +144,7 @@ Panda CSS は Chakra UI が開発した Zero Runtime な CSS-in-JS です。
 Design Tokens <cite>[^3]</cite> などもサポートしているので、かなり開発体験が良かったです。
 [^3]: W3C の<ExternalLink href="https://tr.designtokens.org/format/" title="W3C Design Tokens">Design Tokens Format</ExternalLink>
 
-### Panda CSS でダークモード
+## Panda CSS でダークモード
 
 `panda.config.ts`に以下のように設定するだけで、Panda CSS でも簡単にダークモードを実装できます。
 
@@ -206,7 +206,7 @@ import { css } from "{project-root}/styled-system/css";
 <h1 class={css({ colors: "text" })}>Hello World</h1>;
 ```
 
-## まとめ
+# まとめ
 
 Next.js+Chakra UI で作ったブログを Astro+Panda CSS に移行した話をしました。
 
