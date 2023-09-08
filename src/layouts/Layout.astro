@@ -25,9 +25,7 @@ const ogImage = new URL(image ?? "/ogp.webp", Astro.url.origin);
   <Sprite.Provider>
     <body>
       <Header />
-      <main>
-        <slot />
-      </main>
+      <slot />
       <Footer />
     </body>
   </Sprite.Provider>

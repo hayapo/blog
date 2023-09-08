@@ -14,8 +14,8 @@ const footerStye = css({
   alignItems: "center",
   gap: "0.5rem",
   p: { base: "2rem 2rem", sm: "2rem 3rem" },
-  backgroundColor: { base: "#CACACA", _dark: "#1A1A1A" },
-  color: { base: "#525252", _dark: "#B3B3B3" },
+  backgroundColor: "accent-background",
+  color: "accent-background-text",
   fontSize: { base: "small", sm: "large" },
   fontFamily: "code",
 });
@@ -33,7 +33,7 @@ const footerStye = css({
     <Icon
       href={SITE_REPOSITORY_URL}
       title="Link to Github"
-      color={css({ color: "githubThemed" })}
+      color={css({ color: "iconDefault" })}
     >
       <Sprite name="mdi:github" />
     </Icon>

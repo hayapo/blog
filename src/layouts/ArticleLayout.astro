@@ -1,0 +1,49 @@
+---
+import { css } from "root/styled-system/css";
+import type { CollectionEntry } from "astro:content";
+import type { MarkdownHeading } from "astro";
+import Layout from "@/layouts/Layout.astro";
+import ArticleTopItems from "@/components/ArticleTopItems.astro";
+import SnsShareButtons from "@/components/SnsShareButtons.astro";
+import SideNav from "@/components/SideNav.astro";
+import { TableOfContents } from "@/components/TableOfContents";
+
+type Props = {
+  frontmatter: CollectionEntry<"blog">;
+  headings: MarkdownHeading[];
+};
+
+const { frontmatter, headings }: Props = Astro.props;
+
+const {
+  slug,
+  data: { title, description, coverImage },
+} = frontmatter;
+
+const articleLayoutStyle = css({
+  display: { base: "block", sm: "flex" },
+  flexDirection: { base: "col", sm: "row" },
+  gap: "1.5rem",
+  alignItems: "flex-start",
+});
+---
+
+<Layout title={title} description={description} image={coverImage.src}>
+  <main class={articleLayoutStyle}>
+    <div class={css({ flex: 1, w: "100%" })}>
+      <ArticleTopItems {...frontmatter.data} />
+      <article>
+        <slot />
+      </article>
+      <SnsShareButtons
+        title={title}
+        url={`${import.meta.env.SITE}/${slug}`}
+        className={css({ mt: "2rem", display: { base: "block", sm: "none" } })}
+      />
+    </div>
+    <SideNav>
+      <TableOfContents headings={headings} client:load />
+      <SnsShareButtons title={title} url={`${import.meta.env.SITE}/${slug}`} />
+    </SideNav>
+  </main>
+</Layout>

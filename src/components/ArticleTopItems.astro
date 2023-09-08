@@ -1,0 +1,42 @@
+---
+import { css } from "root/styled-system/css";
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import FormattedDate from "./FormattedDate.astro";
+import UnsplashCredit from "@/components/UnsplashCredit.astro";
+
+type Props = CollectionEntry<"blog">["data"];
+
+const { title, publishDate, updatedDate, coverImage, imageCredit } =
+  Astro.props;
+---
+
+<div class={css({ mb: "2.0rem" })}>
+  <div class={css({ fontSize: "xxx-large" })}>{title}</div>
+  <div class={css({ fontSize: "large" })}>
+    <FormattedDate date={new Date(publishDate)} />
+    {
+      updatedDate && (
+        <span>
+          <span>更新日:</span>
+          <FormattedDate date={new Date(updatedDate)} />
+        </span>
+      )
+    }
+  </div>
+  <Image
+    src={coverImage}
+    alt={title}
+    width={coverImage.width / 1.5}
+    height={coverImage.height / 1.5}
+    class={css({ w: "100%", opacity: 1, objectFit: "cover", my: "0.5rem" })}
+  />
+  {
+    imageCredit && (
+      <UnsplashCredit
+        author={imageCredit.author}
+        authorUrl={imageCredit.authorUrl}
+      />
+    )
+  }
+</div>

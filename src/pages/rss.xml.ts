@@ -12,7 +12,7 @@ export function GET() {
     site: site,
     customData: `<language>ja-jp</language>`,
     items: posts.map((post) => ({
-      title: `<![CDATA[${post.data.title}]]`,
+      title: `<![CDATA[${post.data.title}]]>`,
       description: post.data.description,
       pubDate: post.data.publishDate,
       link: `/${post.slug}`,
