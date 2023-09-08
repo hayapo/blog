@@ -6,7 +6,8 @@ import Layout from "@/layouts/Layout.astro";
 import ArticleTopItems from "@/components/ArticleTopItems.astro";
 import SnsShareButtons from "@/components/SnsShareButtons.astro";
 import SideNav from "@/components/SideNav.astro";
-import { TableOfContents } from "@/components/TableOfContents";
+import { TableOfContents } from "@/components/TableOfContents/TableOfContents";
+import MobileTableOfContents from "@/components/TableOfContents/MobileTableOfContents.astro";
 
 type Props = {
   frontmatter: CollectionEntry<"blog">;
@@ -32,6 +33,7 @@ const articleLayoutStyle = css({
   <main class={articleLayoutStyle}>
     <div class={css({ flex: 1, w: "100%" })}>
       <ArticleTopItems {...frontmatter.data} />
+      <MobileTableOfContents headings={headings} />
       <article>
         <slot />
       </article>

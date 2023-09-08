@@ -1,0 +1,82 @@
+---
+import { useHeadings } from "@/utils/toc";
+import type { MarkdownHeading } from "astro";
+import { css, cx } from "root/styled-system/css";
+
+const MAX_DEPTH = 4;
+
+type Props = {
+  headings: MarkdownHeading[];
+};
+
+const { headings } = Astro.props;
+
+const canonicalHeadings = useHeadings(headings, MAX_DEPTH);
+---
+
+<details
+  class={css({
+    display: { base: "block", lg: "none" },
+    my: "2rem",
+  })}
+>
+  <summary
+    class={css({
+      bg: "accent-blured",
+      p: "0.4rem",
+      rounded: "0.3em",
+      border: "1px solid",
+      borderColor: "borderAccent",
+      fontWeight: "bold",
+    })}
+  >
+    目次
+  </summary>
+  <ul
+    class={css({
+      listStyle: "none",
+      mx: "0",
+      my: "1rem",
+      p: "1rem",
+      bg: "accent-background",
+      rounded: "0.5em",
+    })}
+  >
+    {
+      canonicalHeadings.map(({ depth, slug, text }) => {
+        return (
+          <li
+            class={cx(
+              {
+                2: css({ paddingLeft: "1.0rem" }),
+                3: css({ paddingLeft: "2.0rem" }),
+                4: css({ paddingLeft: "3.0rem" }),
+                5: css({ paddingLeft: "4.0rem" }),
+              }[depth],
+              {
+                "footnote-label": css({ paddingLeft: "0.0rem" }),
+              }[slug],
+              css({
+                my: 5,
+                ml: 1,
+              }),
+            )}
+          >
+            <a
+              class={css({
+                fontWeight: "bold",
+                pl: "1rem",
+                _hover: {
+                  textDecoration: "underline",
+                },
+              })}
+              href={`#${slug}`}
+            >
+              {text}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</details>

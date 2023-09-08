@@ -2,11 +2,12 @@
 import { css } from "root/styled-system/css";
 ---
 
+<!-- TODO: タブレットでのサイドバーの表示をもっと良くする(スペースが足りなくて目次が見にくいので現在はMobileの目次にしている) -->
 <aside
   class={css({
     top: "10rem",
     position: "sticky",
-    display: { base: "none", sm: "flex" },
+    display: { base: "none", lg: "flex" },
     flexDirection: "column",
   })}
 >
