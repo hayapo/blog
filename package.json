@@ -9,7 +9,6 @@
     "preview": "astro preview",
     "astro": "astro",
     "prepare": "panda codegen",
-    "lint": "eslint --ext .astro,.js,.ts,.tsx src",
     "markuplint": "markuplint --config .markuplintrc.ts \"./src/**/*.{astro, mdx}\"",
     "format": "prettier --write --plugin=prettier-plugin-astro ."
   },
@@ -22,18 +21,19 @@
     "preact": "^10.6.5"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.1.2",
     "@markuplint/astro-parser": "^3.9.0",
     "@markuplint/ml-config": "^3.11.0",
     "@pandacss/astro": "^0.13.1",
     "@pandacss/dev": "^0.13.1",
     "@playwright/test": "^1.37.1",
-    "@typescript-eslint/eslint-plugin": "^6.5.0",
-    "@typescript-eslint/parser": "^6.5.0",
-    "astro-eslint-parser": "^0.15.0",
-    "eslint": "^8.48.0",
-    "eslint-plugin-astro": "^0.29.0",
+    "@textlint/textlint-plugin-markdown": "^13.3.3",
     "markuplint": "^3.12.0",
     "prettier": "^3.0.3",
-    "prettier-plugin-astro": "^0.12.0"
+    "prettier-plugin-astro": "^0.12.0",
+    "textlint": "^13.3.3",
+    "textlint-rule-preset-ja-spacing": "^2.3.0",
+    "textlint-rule-preset-japanese": "^8.0.0",
+    "textlint-rule-preset-jtf-style": "^2.3.13"
   }
 }

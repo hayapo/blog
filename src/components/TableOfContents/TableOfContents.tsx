@@ -1,8 +1,8 @@
-import { useState, useEffect } from "preact/hooks";
-import type { JSX } from "preact";
-import { css, cx } from "root/styled-system/css";
 import { useHeadings } from "@/utils/toc";
 import type { MarkdownHeading } from "astro";
+import type { JSX } from "preact";
+import { useEffect, useState } from "preact/hooks";
+import { css, cx } from "root/styled-system/css";
 
 type Props = {
   headings: MarkdownHeading[];
@@ -75,18 +75,19 @@ export function TableOfContents({ headings }: Props) {
             <li
               class={cx(
                 {
-                  2: css({ paddingLeft: "1.0rem" }),
-                  3: css({ paddingLeft: "2.0rem" }),
-                  4: css({ paddingLeft: "3.0rem" }),
-                  5: css({ paddingLeft: "4.0rem" }),
+                  2: css({ ps: "1.0rem" }),
+                  3: css({ ps: "2.0rem" }),
+                  4: css({ ps: "3.0rem" }),
+                  5: css({ ps: "4.0rem" }),
                 }[depth],
                 {
-                  "footnote-label": css({ paddingLeft: "0.0rem" }),
+                  "footnote-label": css({ ps: "0.0rem" }),
                 }[slug],
                 css({
                   my: 5,
                   ml: 1,
                   bg: currentHeading.slug === slug && "accent-blured",
+                  rounded: "0.3em",
                 }),
               )}
             >
