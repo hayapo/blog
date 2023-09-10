@@ -7,6 +7,6 @@
       "root/*": ["./*"]
     }
   },
-  "include": ["src/**/*", "test", "panda.config.ts"],
+  "include": ["src/**/*", "panda.config.ts"],
   "exclude": ["dist"]
 }
