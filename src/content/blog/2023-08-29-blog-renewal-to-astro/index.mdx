@@ -32,7 +32,7 @@ Next.js との違いとかはドキュメントで詳しく解説されてます
 
 書き味は Next.js とほぼ同じなので、移行はそこまで難しくなかったです。
 
-## MDX でブログを入稿する (Contents Collections)
+## MDX でブログを入稿する (Content Collections)
 
 ブログを移行するにあたって、今まで microCMS で管理していた記事を MDX で管理・入稿できるようにしました。
 
@@ -42,7 +42,7 @@ Next.js との違いとかはドキュメントで詳しく解説されてます
 
 ### Content Collections
 
-Astro では<ExternalLink href="https://docs.astro.build/en/guides/content-collections/" title="Astro Content Collections">Contens Collections</ExternalLink>
+Astro では<ExternalLink href="https://docs.astro.build/en/guides/content-collections/" title="Astro Content Collections">Content Collections</ExternalLink>
 という機能を使うことで、簡単かつ型安全に MDX で記事を管理できます。
 
 Astro では`src/content`が予約ディレクトリとなり、直下にあるディレクトリがコレクションとして認識されます。
@@ -210,6 +210,6 @@ import { css } from "{project-root}/styled-system/css";
 
 Next.js+Chakra UI で作ったブログを Astro+Panda CSS に移行した話をしました。
 
-Astro はデフォルトで JS 配信が無いサイトを作ることができるので、ブログのような Contents First なサイトを作るのに向いていると思います。
+Astro はデフォルトで JS 配信が無いサイトを作ることができるので、ブログのような Content First なサイトを作るのに向いていると思います。
 
 あと、React や Preact, Svelte などの自分の好きな UI フレームワークを使うことができるのもとても良いです。
