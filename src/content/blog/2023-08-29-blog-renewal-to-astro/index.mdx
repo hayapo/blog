@@ -14,7 +14,7 @@ import ExternalLink from "@/components/ExternalLink.astro";
 
 それに合わせてスタイリングも Chakra UI から ずっと触ってみたかった Panda CSS に変更しました。
 
-# なぜ Astro に移行したのか
+## なぜ Astro に移行したのか
 
 以前から Astro を触りたいな―と思っていたり、<cite>Twitter[^1]</cite> などで Astro はいいぞみたいなことを見かけていたので、  
 今回ブログを移行するにあたって Astro にしてみました。
@@ -25,14 +25,14 @@ import ExternalLink from "@/components/ExternalLink.astro";
 を知ったのも理由の一つです。
 [^2]: Jason Miller 氏の記事は<ExternalLink href="https://jasonformat.com/islands-architecture" title="hayapo web site">こちら</ExternalLink>
 
-## Astro に移行する
+### Astro に移行する
 
 Astro の公式サイトを参考に Next.js から Astro に移行しました。  
 Next.js との違いとかはドキュメントで詳しく解説されてます。
 
 書き味は Next.js とほぼ同じなので、移行はそこまで難しくなかったです。
 
-## MDX でブログを入稿する (Contents Collections)
+### MDX でブログを入稿する (Contents Collections)
 
 ブログを移行するにあたって、今まで microCMS で管理していた記事を MDX で管理・入稿できるようにしました。
 
@@ -40,7 +40,7 @@ Next.js との違いとかはドキュメントで詳しく解説されてます
 
 また、自分ひとりで管理するので microCMS のようなオンラインのヘッドレス CMS よりも MDX で管理したほうが多分楽です。
 
-### Content Collections
+#### Content Collections
 
 Astro では<ExternalLink href="https://docs.astro.build/en/guides/content-collections/" title="Astro Content Collections">Contens Collections</ExternalLink>
 という機能を使うことで、簡単かつ型安全に MDX で記事を管理できます。
@@ -49,7 +49,7 @@ Astro では`src/content`が予約ディレクトリとなり、直下にある�
 
 例えばこんな感じにすると、`blog`というコレクションが作成されます。
 
-```
+```text
 src/content
 ├── blog
 │   ├── article-1.mdx
@@ -98,7 +98,7 @@ const { Content } = await post.render()
 </BlogPost>
 ```
 
-### Frontmatter のバリデーション
+#### Frontmatter のバリデーション
 
 また、zod を使った`Frontmatter`のバリデーションもできます。
 
@@ -135,7 +135,7 @@ export const collections = {
 } as const;
 ```
 
-# Panda CSS に変更した
+## Panda CSS に変更した
 
 以前のブログはスタイリングに Chakra UI を使っていましたが、今回は Panda CSS を使ってみました。
 
@@ -206,7 +206,7 @@ import { css } from "{project-root}/styled-system/css";
 <h1 class={css({ colors: "text" })}>Hello World</h1>;
 ```
 
-# まとめ
+## まとめ
 
 Next.js+Chakra UI で作ったブログを Astro+Panda CSS に移行した話をしました。
 
