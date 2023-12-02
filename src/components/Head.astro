@@ -1,5 +1,7 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 import { SITE_TITLE } from "@/consts";
+
 interface Props {
   title: string;
   description: string;
@@ -68,7 +70,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta name="application-name" content="hayapo::blog" />
   <meta name="msapplication-TileColor" content="#da532c" />
   <meta name="theme-color" content="#ffffff" />
+
+  <!-- Use View Transitions API -->
+  <ViewTransitions />
 </head>
+
 <script is:inline>
   const root = document.documentElement;
   const theme = (() => {
@@ -80,9 +86,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     }
     return "light";
   })();
-  if (theme === "light") {
-    root.classList.remove("dark");
-  } else {
-    root.classList.add("dark");
-  }
+  const switchTheme = () => {
+    if (theme === "light") {
+      root.classList.remove("dark");
+    } else {
+      root.classList.add("dark");
+    }
+  };
+  switchTheme();
+  document.addEventListener('astro:after-swap', switchTheme);
 </script>

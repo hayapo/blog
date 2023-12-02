@@ -1,5 +1,5 @@
-import { defineCollection, z } from "astro:content";
 import { POST_TAGS } from "@/consts";
+import { defineCollection, z } from "astro:content";
 
 const blogCollection = defineCollection({
   type: "content",
