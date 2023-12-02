@@ -21,7 +21,6 @@
     "preact": "^10.6.5"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.1.2",
     "@markuplint/astro-parser": "^3.9.0",
     "@markuplint/ml-config": "^3.11.0",
     "@pandacss/astro": "^0.13.1",
