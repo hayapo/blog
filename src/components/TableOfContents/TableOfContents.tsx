@@ -75,10 +75,10 @@ export function TableOfContents({ headings }: Props) {
             <li
               class={cx(
                 {
-                  2: css({ ps: "1.0rem" }),
-                  3: css({ ps: "2.0rem" }),
-                  4: css({ ps: "3.0rem" }),
-                  5: css({ ps: "4.0rem" }),
+                  2: css({ ps: "0rem" }),
+                  3: css({ ps: "1.0rem" }),
+                  4: css({ ps: "2.0rem" }),
+                  5: css({ ps: "3.0rem" }),
                 }[depth],
                 {
                   "footnote-label": css({ ps: "0.0rem" }),
@@ -93,6 +93,7 @@ export function TableOfContents({ headings }: Props) {
             >
               <a
                 class={css({
+                  color: "text",
                   fontWeight: "bold",
                   pl: "1rem",
                   _hover: {
