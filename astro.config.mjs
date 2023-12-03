@@ -16,4 +16,5 @@ export default defineConfig({
       theme: "github-dark",
     },
   },
+  vite: { optimizeDeps: { exclude: ['@resvg/resvg-js'] } }
 });
