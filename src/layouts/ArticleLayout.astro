@@ -18,7 +18,7 @@ const { frontmatter, headings }: Props = Astro.props;
 
 const {
   slug,
-  data: { title, description, coverImage },
+  data: { title, description },
 } = frontmatter;
 
 const articleLayoutStyle = css({
@@ -29,7 +29,7 @@ const articleLayoutStyle = css({
 });
 ---
 
-<Layout title={title} description={description} image={coverImage.src}>
+<Layout title={title} description={description} image={`/og/${slug}.png`}>
   <main class={articleLayoutStyle}>
     <div class={css({ flex: 1, w: "100%" })}>
       <ArticleTopItems {...frontmatter.data} />
