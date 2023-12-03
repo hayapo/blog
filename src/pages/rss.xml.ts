@@ -1,6 +1,6 @@
-import rss from "@astrojs/rss";
 import { SITE_TITLE } from "@/consts";
 import { getBlogEntries } from "@/utils/blog";
+import rss from "@astrojs/rss";
 
 const site = import.meta.env.SITE;
 const posts = await getBlogEntries();
@@ -10,7 +10,7 @@ export function GET() {
     title: SITE_TITLE,
     description: `RSS feed for ${SITE_TITLE}`,
     site: site,
-    customData: `<language>ja-jp</language>`,
+    customData: "<language>ja-jp</language>",
     items: posts.map((post) => ({
       title: `<![CDATA[${post.data.title}]]>`,
       description: post.data.description,

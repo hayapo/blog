@@ -15,13 +15,19 @@
   "dependencies": {
     "@astrojs/mdx": "^1.0.0",
     "@astrojs/preact": "^3.0.0",
+    "@astrojs/react": "^3.0.6",
     "@astrojs/rss": "^3.0.0",
-    "astro": "^3.0.3",
+    "@resvg/resvg-js": "^2.6.0",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "astro": "^3.0.13",
     "astro-icon": "^0.8.1",
-    "preact": "^10.6.5"
+    "preact": "^10.6.5",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "satori": "^0.10.11"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.1.2",
     "@markuplint/astro-parser": "^3.9.0",
     "@markuplint/ml-config": "^3.11.0",
     "@pandacss/astro": "^0.13.1",
