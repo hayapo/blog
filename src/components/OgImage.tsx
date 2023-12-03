@@ -1,19 +1,19 @@
 import satori from "satori";
 import { readFileSync } from "fs";
 import { Resvg } from '@resvg/resvg-js';
+import og_background from "../assets/og_background.png";
 
 const width = 1200;
 const height = 630;
 const fontFamily = "IBM Plex Sans JP"
 
 export async function OgImage(text: string) {
-  // const fontData = (await getFontData()) as ArrayBuffer;
-  const fontData = await getSubsetFontData(text, fontFamily, "700");
-
+  const fontData = await getSubsetFontData(text, fontFamily, 700);
   const ogBackgroundImage = readFileSync(
-    new URL("../assets/og_background.png", import.meta.url),
-    { encoding: "base64" }
-  );
+    import.meta.env.DEV
+      ? new URL(`../assets/og_background.png`, import.meta.url)
+      : `./dist/${og_background.src}`,
+    { encoding: "base64" });
   const ogBackgroundImageUrl = `data:image/png;base64,${ogBackgroundImage}`;
 
   const satoriSvg = await satori(
@@ -67,7 +67,7 @@ export async function OgImage(text: string) {
 }
 
 // Font fetching
-async function getSubsetFontData(text: string, font: string, fontWeight: string) {
+async function getSubsetFontData(text: string, font: string, fontWeight: number) {
   const GOOGLE_FONT_ENDPOINT = `https://fonts.googleapis.com/css2?family=${font}:wght@${fontWeight}&text=${encodeURIComponent(text)}`;
 
   const css = await fetch(GOOGLE_FONT_ENDPOINT).then((res) => res.text());
