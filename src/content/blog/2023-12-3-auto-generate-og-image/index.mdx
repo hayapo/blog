@@ -1,0 +1,190 @@
+---
+slug: auto-generate-og-image
+title: ブログ投稿のOG画像を自動生成する
+description: Twitter cardの`summary_large_image`の仕様変更に伴い、ブログ投稿のOGイメージを自動生成するするようにしました。
+tags: ["Astro", "Typescript"]
+publishDate: 2023-12-03
+coverImage: ./cover.webp
+imageCredit: {author: Andrej Lišakov, authorUrl: https://unsplash.com/@lishakov}
+---
+import ExternalLink from "@/components/ExternalLink.astro";
+
+# Twitter cardの仕様変更
+
+2023年10月の初めに、Twitter (別名X)の外部リンクの表示内容が変更された。k
+
+具体的には、`twitter:card`に`summary_large_image`を使用している場合、  
+以前は以下の画像のようにOGイメージ＋`description`がカードに表示されていました
+
+![image](./old_og_image.webp)
+
+しかし仕様変更後は、OGイメージが大きく表示され、以下のように画像の右下にドメインが小さくされるようになりました。
+
+![image](./new_og_image.webp)
+
+Twitterカードにタイトルとdescriptionが表示されなくなり、
+投稿したURLの詳細な情報がわからなくなってしまいました。
+
+最近では、この使用を利用して、OGイメージを画像に見せかけてクリックをさせ、悪質なサイトに飛ばすという例もちらほら見かけます。
+
+ブログ投稿などをOGPの内容が動的に変化するコンテンツを共有する場合には  
+OGイメージを自動生成し、記事タイトルをOGイメージに含めたほうが、ユーザーにとって遷移する先のサイト情報がわかりやすくなります。
+
+## OG画像を自動生成する
+
+そこで当ブログも投稿記事をTwitterに共有する際に記事タイトルを含めたOGイメージを動的に生成するようにしました。
+
+概要としては、<ExternalLink href="https://github.com/vercel/satori" title="vercel/satori">vercel/satori</ExternalLink>と<ExternalLink href="https://github.com/yisibl/resvg-js" title="@resvg/resvg-js">@resvg/resvg-js</ExternalLink>を使用して JSX → SVG → PNG の流れでPNGを生成しています
+
+## 実装
+
+### OGイメージのエンドポイントを作成する
+
+まず、`src/pages/og`に`[slug].png.ts`を作り、<cite>画像を返すエンドポイント[^1]</cite>を作成します。
+[^1]: <ExternalLink href="https://docs.astro.build/ja/core-concepts/endpoints/" title="endpoint" >Astro endpoint </ExternalLink>
+
+`getStaticPaths()`ですべてのブログエントリの`slug`を取得し、パスを生成します。
+
+次に以下の手順で、`GET関数`で`GET method`に対するレスポンスを定義していきます。  
+
+1. `getStaticPaths()`で生成されたパスからslugを取得し、対応するエントリすべてを`getEntryBySlug()`で取得
+2. 後述する`OgImage`コンポーネントでエントリのタイトルをもとにOGイメージを生成する
+3. 生成されたOGイメージをbodyとするレスポンスを定義する
+
+```ts
+// [slug].png.ts
+import type { APIContext } from "astro";
+import { getCollection, getEntryBySlug } from "astro:content";
+// satoriを使用したOGイメージのコンポーネント
+import { OgImage } from "../components/OgImage";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("blog");
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+  }))
+}
+
+export async function GET({ params }: APIContext) {
+  const entry = await getEntryBySlug("blog", params.slug as string);
+  const body = await OgImage(entry!.data.title); // Bufferを受け取る
+
+  // 生成されたOGイメージを含むレスポンスを返す
+  return new Response(body, {
+    headers: {
+      "Content-Type": "image/png",
+    },
+  })
+}
+```
+
+各エントリのパス生成と各エンドポイント（eg: /og/about-me.png）のレスポンス生成はビルド時に行われます
+
+### `satori`でJSXをSVGに変換
+
+次に`satori`を使用してOGイメージをJSXで定義し、SVGに変換します。
+
+`satori`自体の使い方はとても簡単なのでここで詳しく説明しませんが、基本的には`satori(element, options)`の第一引数にJSXでOGイメージを定義し、第二引数でフォントや大きさなどを指定して上げれはOKです。
+
+今回はOGイメージに背景画像を使用しているのと、デフォルトではsatoriで日本語を扱えないため、２つ追加作業が必要になります
+
+#### 背景に使用する画像を読み込む
+
+`astro:assets`を使用して背景画像を読み込みます。
+
+
+```ts
+import ogBackground from "../assets/og_background.png";
+```
+
+`satori`では背景画像に画像を使用し、更にSVGやPNGなどにレンダリングする場合は`base64`エンコードされた`Data URL`か`Buffer`を使用すると余計な計算がなくなるらしいので、`src/assets/`においた背景画像を`Data URL`として読み込む
+
+このとき、`ogBackground.src`が指すパスが、開発モードとproductionモードで異なる。（developではそのまま`src/assets`以下になるが、productionでは`dist/_astro`以下になる）
+
+そのため、`import.meta.env.DEV`を利用して、モードによって`readFileSync`で指定するパスを変えてあげる
+
+（ここらへんもっと良いいいやり方がありそうなので、知っている方いれば教えて頂きたいです。）
+
+```tsx
+const ogBackgroundImage = readFileSync(
+    import.meta.env.DEV
+      ? new URL(`../assets/og_background.png`, import.meta.url)
+      : `./dist/${ogBackground.src}`,
+    { encoding: "base64" }
+  );
+
+// Data URLにする
+const ogBackgroundImageUrl = `data:image/png;base64,${ogBackgroundImage}`;
+```
+
+#### フォントの取得
+
+```tsx
+import satori from "satori";
+import { readFileSync } from "fs";
+import { Resvg } from '@resvg/resvg-js';
+import ogBackground from "../assets/og_background.png";
+
+const width = 1200;
+const height = 630;
+const fontFamily = "IBM Plex Sans JP"
+
+export async function OgImage(text: string) {
+  const ogBackgroundImage = readFileSync(
+    import.meta.env.DEV
+      ? new URL(`../assets/og_background.png`, import.meta.url)
+      : `./dist/${ogBackground.src}`,
+    { encoding: "base64" });
+  const ogBackgroundImageUrl = `data:image/png;base64,${ogBackgroundImage}`;
+
+  const satoriSvg = await satori(
+    <main
+      style={{
+        height: "100%",
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontFamily: fontFamily,
+      }}
+    >
+      <section>
+        <img
+          src={ogBackgroundImageUrl}
+          style={{
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "100% 100%",
+          }}>
+          <h1 style={{fontSize: "55px", margin: "auto", color: 'black'}}>
+            {text}
+          </h1>
+        </img>
+      </section>
+    </main>,
+    {
+      width: width,
+      height: height,
+      fonts: [
+        {
+          name: fontFamily,
+          data: fontData,
+          style: "normal",
+        }
+      ]
+    }
+  )
+  const resvg = new Resvg(satoriSvg, {
+    font: {
+      loadSystemFonts: false,
+    },
+    fitTo:{
+      mode: "width",
+      value: width,
+    }
+  });
+
+  return resvg.render().asPng();
+}
+
+```
