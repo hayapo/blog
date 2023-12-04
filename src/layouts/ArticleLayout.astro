@@ -31,7 +31,7 @@ const articleLayoutStyle = css({
 
 <Layout title={title} description={description} image={`/og/${slug}.png`}>
   <main class={articleLayoutStyle}>
-    <div class={css({ flex: 1, w: "100%" })}>
+    <div class={css({ flex: 1, w: "100%", maxWidth: "breakpoint-lg" })}>
       <ArticleTopItems {...frontmatter.data} />
       <MobileTableOfContents headings={headings} />
       <article>

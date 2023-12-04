@@ -119,8 +119,8 @@ export default defineConfig({
       m: "auto",
       px: { base: "0.5rem", sm: "1.5rem" },
       py: "2.0rem",
-      maxWidth: "calc(100% - 15px)",
-      width: "1300px",
+      maxWidth: "calc(100% - `15px)",
+      width: "1400px",
     },
     h1: {
       fontSize: "39px",
