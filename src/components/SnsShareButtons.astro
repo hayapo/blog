@@ -18,7 +18,7 @@ const titleShareText = `${title} - ${SITE_TITLE}`;
 
 const trimedCurrentUrl = url.replace(/^https:\/\//, "");
 
-const twitterShareUrl = `https://x.com/share?url=${url}&text=${titleShareText}`;
+const twitterShareUrl = `https://x.com/intent/tweet?url=${url}&text=${titleShareText}%0a`;
 const hatbuBookmarkUrl = `https://b.hatena.ne.jp/entry/s/${trimedCurrentUrl}##bbutton`;
 
 const twitterIconSize = 20;
