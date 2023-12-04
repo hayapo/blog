@@ -1,7 +1,7 @@
 import satori from "satori";
 import { readFileSync } from "fs";
 import { Resvg } from '@resvg/resvg-js';
-import og_background from "../assets/og_background.png";
+import ogBackground from "../assets/og_background.png";
 
 const width = 1200;
 const height = 630;
@@ -12,7 +12,7 @@ export async function OgImage(text: string) {
   const ogBackgroundImage = readFileSync(
     import.meta.env.DEV
       ? new URL(`../assets/og_background.png`, import.meta.url)
-      : `./dist/${og_background.src}`,
+      : `./dist/${ogBackground.src}`,
     { encoding: "base64" });
   const ogBackgroundImageUrl = `data:image/png;base64,${ogBackgroundImage}`;
 
