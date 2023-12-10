@@ -1,0 +1,62 @@
+---
+slug: astro-v4-release
+title: Astro v4 がリリースされた
+description: Astro v4 がリリースされたので、その変更点を紹介します。
+tags: ["Astro", "Typescript"]
+publishDate: 2023-12-09
+coverImage: ./cover.webp
+---
+import ExternalLink from "@/components/ExternalLink.astro";
+
+## Astro v4 がリリースされた
+
+12月5日に [Astro v4](https://astro.build/blog/astro-4/) がリリースされました。
+
+Astro v4のリリースでは以下のように大きく3つの変更がありました
+
+1. 新機能の追加
+    - Astro Dev Toolbar
+    - i18n routing
+    - Incremental Content Caching (Experimental)
+2. 依存関係のアップデート
+3. 破壊的変更
+
+(Astro Dev Toolbarとi18n routingはexperimentalでしたが、今回のアップデートでexperimentalから外れました)
+
+今回は、上記のAstro v4の変更点を紹介していこうと思います。  
+
+また、Astro v4のリリースに伴い、Astro Docもリニューアルされました。  
+Astroのドキュメントテンプレートの`Starlight`が使用されており、デザインなどが変更されています。  
+私は前のオレンジ色を使ったデザインの方が好きでした...
+
+## アップグレード方法
+
+何はともあれ、まずAstroをアップデートしましょう。  
+v4へのアップデートは、以下のコマンドを実行するだけで完了します。
+
+```bash
+# npm
+npx @astrojs/upgrade
+
+# pnpm
+pnpm dlx @astrojs/upgrade
+
+# yarn
+yarn dlx @astrojs/upgrade
+```
+
+## 新機能
+
+まず初めに、v4で追加された新機能を紹介します。
+
+### Astro Dev Toolbar
+
+Astro Dev Toolbarは、Astroでの開発をより快適にするためのツールです。  
+開発サーバーを起動すると自動的に起動し、アクセシビリティやIsland componentのハイライトを行ってくれるツールバーが下部に表示されます。
+
+
+## 依存関係のアップデート
+
+## 破壊的変更
+
+## その他

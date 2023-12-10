@@ -5,10 +5,10 @@
   },
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.organizeImports.biome": true
+    "source.organizeImports.biome": "explicit"
   },
   "textlint.languages": ["markdown", "mdx"],
   "files.associations": {
-    "*.mdx": "markdown"
+    "*.mdx": "mdx"
   }
 }

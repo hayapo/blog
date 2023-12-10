@@ -177,6 +177,9 @@ export default defineConfig({
       mt: "1rem",
       ml: "1rem",
       listStyle: "decimal inside",
+      "& ul": {
+        mt: 0,
+      },
     },
     table: {
       width: "100%",
