@@ -24,14 +24,22 @@ const {
 const articleLayoutStyle = css({
   display: { base: "block", sm: "flex" },
   flexDirection: { base: "col", sm: "row" },
-  gap: "1.5rem",
+  gap: "5rem",
   alignItems: "flex-start",
 });
 ---
 
 <Layout title={title} description={description} image={`/og/${slug}.png`}>
   <main class={articleLayoutStyle}>
-    <div class={css({ flex: 1, w: "100%", maxWidth: "breakpoint-lg" })}>
+    <SideNav>
+      <TableOfContents headings={headings} client:load />
+      <SnsShareButtons
+        title={title}
+        url={`${import.meta.env.SITE}/${slug}`}
+        className={css({ mt: "1.5rem" })}
+      />
+    </SideNav>
+    <div class={css({ flex: 1, w: "100%", maxWidth: "breakpoint-md" })}>
       <ArticleTopItems {...frontmatter.data} />
       <MobileTableOfContents headings={headings} />
       <article>
@@ -40,12 +48,8 @@ const articleLayoutStyle = css({
       <SnsShareButtons
         title={title}
         url={`${import.meta.env.SITE}/${slug}`}
-        className={css({ mt: "2rem", display: { base: "block", sm: "none" } })}
+        className={css({ mt: "2rem", display: { base: "block", lg: "none" } })}
       />
     </div>
-    <SideNav>
-      <TableOfContents headings={headings} client:load />
-      <SnsShareButtons title={title} url={`${import.meta.env.SITE}/${slug}`} />
-    </SideNav>
   </main>
 </Layout>

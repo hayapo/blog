@@ -119,8 +119,8 @@ export default defineConfig({
       m: "auto",
       px: { base: "0.5rem", sm: "1.5rem" },
       py: "2.0rem",
-      maxWidth: "calc(100% - `15px)",
-      width: "1400px",
+      maxWidth: "calc(100% - 15px)",
+      width: "1300px",
     },
     h1: {
       fontSize: "39px",
@@ -177,6 +177,9 @@ export default defineConfig({
       mt: "1rem",
       ml: "1rem",
       listStyle: "decimal inside",
+      "& ul": {
+        mt: 0,
+      },
     },
     table: {
       width: "100%",

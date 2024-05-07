@@ -9,9 +9,9 @@ imageCredit: {author: Andrej Lišakov, authorUrl: https://unsplash.com/@lishakov
 ---
 import ExternalLink from "@/components/ExternalLink.astro";
 
-# Twitter cardの仕様変更
+## Twitter cardの仕様変更
 
-2023年10月の初めに、Twitter (別名X)の外部リンクの表示内容が変更された。k
+2023年10月の初めに、Twitter (別名X)の外部リンクの表示内容が変更されました。
 
 具体的には、`twitter:card`に`summary_large_image`を使用している場合、  
 以前は以下の画像のようにOGイメージ＋`description`がカードに表示されていました
@@ -143,7 +143,7 @@ async function getSubsetFontData(text: string, font: string, fontWeight: number)
 }
 ```
 
-<cite>satori playgroundのソースコード[^2]</cite>でも、同じようにGoolge Fonts APIからフォントをfetchしていますが、  
+    <cite>satori playgroundのソースコード[^2]</cite>でも、同じようにGoolge Fonts APIからフォントをfetchしていますが、  
 `.ttf`ファイルを確実に取得するために以下のようにuser agentをすり替えています。  
 これはあまりよろしくないな～っていうのと、こんな事しなくても普通にfetchできたので僕の場合はそのままfetchしています。
 [^2]: <ExternalLink href="https://github.com/vercel/satori/blob/main/playground/pages/api/font.ts#L86" title="vercel/satori fonts.ts">satori-playgroundの font fetch 実装</ExternalLink>
@@ -168,6 +168,6 @@ await fetch(API, {
 ## 参考
 
 1. <ExternalLink href="https://github.com/vercel/satori" title="Github | vercel/satori">vercel
-/satori</ExternalLink>
+      /satori</ExternalLink>
 2. <ExternalLink href="https://t28.dev/blog/output-ogp-image-for-astro-pages/" title="@vercel/og を使って Astro 製ブログのビルド時に OGP 画像を出力する">t28.dev | @vercel/og を使って Astro 製ブログのビルド時に OGP 画像を出力する</ExternalLink>
 3. <ExternalLink href="https://blog.lacolaco.net/posts/astro-satori-og-image-generation/" title="Marginalia | satoriを使ったAstroのOGP画像生成メモ">Marginalia | satoriを使ったAstroのOGP画像生成メモ</ExternalLink>
