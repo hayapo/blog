@@ -35,7 +35,7 @@ export async function OgImage(text: string) {
             backgroundPosition: "center",
             backgroundSize: "100% 100%",
           }}>
-          <h1 style={{fontSize: "55px", margin: "auto", color: 'black'}}>
+          <h1 style={{fontSize: "55px", margin: "auto", color: 'black', textAlign: "center"}}>
             {text}
           </h1>
         </img>
