@@ -16,7 +16,7 @@ const { title, description, image } = Astro.props;
 
 const siteTitle = title ?? SITE_TITLE;
 const siteDescription = description ?? SITE_DESCRIPTION;
-const ogImage = new URL(image ?? "/ogp.webp", Astro.url.origin);
+const ogImage = new URL(image ?? "/ogp_title.webp", Astro.url.origin);
 ---
 
 <!doctype html>
