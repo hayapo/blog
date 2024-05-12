@@ -1,6 +1,6 @@
 ---
 import { css } from "root/styled-system/css";
-import { SITE_TITLE } from "@/consts";
+import { SITE_ROOT, SITE_TITLE } from "@/consts";
 
 const headerStyle = css({
   height: "header",
@@ -27,7 +27,7 @@ const headerStyle = css({
 >
   <nav class={headerStyle}>
     <a
-      href="/"
+      href=`${SITE_ROOT}`
       title="Back to home"
       aria-label="Back to home"
       class={css({
