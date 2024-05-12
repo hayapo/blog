@@ -29,13 +29,13 @@ const articleLayoutStyle = css({
 });
 ---
 
-<Layout title={title} description={description} image={`/og/${slug}.png`}>
+<Layout title={title} description={description} image={`/og/entry/${slug}.png`}>
   <main class={articleLayoutStyle}>
     <SideNav>
       <TableOfContents headings={headings} client:load />
       <SnsShareButtons
         title={title}
-        url={`${import.meta.env.SITE}/${slug}`}
+        url={`${import.meta.env.SITE}/entry/${slug}`}
         className={css({ mt: "1.5rem" })}
       />
     </SideNav>
@@ -47,7 +47,7 @@ const articleLayoutStyle = css({
       </article>
       <SnsShareButtons
         title={title}
-        url={`${import.meta.env.SITE}/${slug}`}
+        url={`${import.meta.env.SITE}/entry/${slug}`}
         className={css({ mt: "2rem", display: { base: "block", lg: "none" } })}
       />
     </div>
