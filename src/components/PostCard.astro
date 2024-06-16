@@ -26,7 +26,7 @@ const { frontmatter, slug } = Astro.props;
   })}
 >
   <a
-    href={`/blog/entry/${slug}`}
+    href={`/${slug}`}
     title={frontmatter.title}
     class={css({
       display: "flex",
