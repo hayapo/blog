@@ -3,11 +3,12 @@ import { defineConfig, passthroughImageService } from "astro/config";
 import mdx from "@astrojs/mdx";
 import pandacss from "@pandacss/astro";
 import preact from "@astrojs/preact";
-import { SITE_URL } from "./src/consts";
 
 // https://astro.build/config
 export default defineConfig({
-  site: SITE_URL,
+  site: "https://blog.hayapo.dev/blog",
+  base: "/blog/",
+  trailingSlash: "never",
   image: {
     service: passthroughImageService(),
   },

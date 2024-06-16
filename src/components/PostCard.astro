@@ -3,6 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import { css } from "root/styled-system/css";
 import { Image } from "astro:assets";
 import FormattedDate from "@/components/FormattedDate.astro";
+import { SITE_BASE } from "@/consts";
 
 interface Props {
   frontmatter: CollectionEntry<"blog">["data"];
@@ -26,7 +27,7 @@ const { frontmatter, slug } = Astro.props;
   })}
 >
   <a
-    href={`/${slug}`}
+    href={`${SITE_BASE}/${slug}`}
     title={frontmatter.title}
     class={css({
       display: "flex",

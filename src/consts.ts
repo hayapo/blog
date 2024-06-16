@@ -1,4 +1,4 @@
-export const SITE_ROOT = "/";
+export const SITE_BASE = "/blog";
 export const SITE_URL = "https://hayapo.dev";
 export const SITE_TITLE = "hayapo::blog";
 export const SITE_DESCRIPTION = "hayapoの技術ブログです。";
