@@ -44,7 +44,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta property="twitter:creator" content="@_hayapo" />
 
   <!-- favicon -->
-  <link rel="icon" type="image/svg+xml" href=`/favicon/favicon.ico` />
+  <link rel="icon" type="image/svg+xml" href=`/blog/favicon/favicon.ico` />
   <link
     rel="apple-touch-icon"
     sizes="180x180"
@@ -76,21 +76,3 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <!-- Use View Transitions API -->
   <ViewTransitions />
 </head>
-
-<script is:inline>
-  const root = document.documentElement;
-  const theme = (() => {
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      return "dark";
-    }
-    return "light";
-  })();
-  const switchTheme = () => {
-    if (theme === "light") {
-      root.classList.remove("dark");
-    } else {
-      root.classList.add("dark");
-    }
-  };
-  switchTheme();
-</script>
