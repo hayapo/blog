@@ -9,6 +9,7 @@ export default defineConfig({
   site: "https://blog.hayapo.dev/blog",
   base: "/blog/",
   trailingSlash: "never",
+  outDir: "./dist/blog",
   image: {
     service: passthroughImageService(),
   },
