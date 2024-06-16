@@ -10,9 +10,6 @@ export default defineConfig({
   base: "/blog",
   trailingSlash: "never",
   outDir: "./dist/blog",
-  redirects: {
-    "/": "/blog",
-  },
   image: {
     service: passthroughImageService(),
   },
