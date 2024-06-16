@@ -7,9 +7,12 @@ import preact from "@astrojs/preact";
 // https://astro.build/config
 export default defineConfig({
   site: "https://blog.hayapo.dev/blog",
-  base: "/blog/",
+  base: "/blog",
   trailingSlash: "never",
   outDir: "./dist/blog",
+  redirects: {
+    "/": "/blog",
+  },
   image: {
     service: passthroughImageService(),
   },
