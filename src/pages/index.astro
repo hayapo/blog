@@ -38,12 +38,12 @@ const defauleLayoutStyle = css({
 			alignItems: "center",
 			gap: "0.5rem"
 		})}>
-			<IconLink href=`https://github.com/hayapo` title="github" name="mdi:github" color="gray"/>
-			<IconLink href=`https://x.com/${TWITTER_ID}` title="twitter" name="mdi:twitter" color="gray"/>
-			<IconLink href=`https://mstdn.jp/@${MASTODON_ID}` title="mastodon" name="mdi:mastodon" color="gray"/>
-			<IconLink href=`https://bsky.app/profile/${BLUESKY_ID}` title="bluesky" name="ri:bluesky-fill" color="gray"/>
-			<IconLink href=`https://discordapp.com/users/${DISCORD_ID}` title="discord" name="ri:discord-fill" color="gray"/>
-			<IconLink href=`https://zenn.dev/${ZENN_ID}` title="zenn" name="simple-icons:zenn" color="gray" isZenn/>
+			<IconLink href=`https://github.com/hayapo` title="github" name="mdi:github" color={css({color: "gray"})} />
+			<IconLink href=`https://x.com/${TWITTER_ID}` title="twitter" name="mdi:twitter" color={css({color: "gray"})} />
+			<IconLink href=`https://mstdn.jp/@${MASTODON_ID}` title="mastodon" name="mdi:mastodon" color={css({color: "gray"})} />
+			<IconLink href=`https://bsky.app/profile/${BLUESKY_ID}` title="bluesky" name="ri:bluesky-fill" color={css({color: "gray"})} />
+			<IconLink href=`https://discordapp.com/users/${DISCORD_ID}` title="discord" name="ri:discord-fill" color={css({color: "gray"})} />
+			<IconLink href=`https://zenn.dev/${ZENN_ID}` title="zenn" name="simple-icons:zenn" color={css({color: "gray"})} isZenn/>
 		</div>
   </main>
 </Layout>
