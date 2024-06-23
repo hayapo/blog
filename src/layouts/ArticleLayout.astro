@@ -33,21 +33,20 @@ const articleLayoutStyle = css({
 <Layout
   title={title}
   description={description}
-  image={`/blog/og/entry/${slug}.png`}
-  location="blog"
+  image={`/og/${slug}.png`}
 >
 	<main class={articleLayoutStyle}>
 		<SideNav>
 			<TableOfContents headings={headings} client:load />
 			<SnsShareButtons
 			title={title}
-			url={`${import.meta.env.SITE}/entry/${slug}`}
+			url={`${import.meta.env.SITE}/${slug}`}
 			className={css({ mt: "1.5rem" })}
 			/>
 		</SideNav>
 		<div>
 			<div>
-				<a href="/blog" class={css({
+				<a href="/" class={css({
 					width: "fit-content",
 					display: "flex",
 					alignItems: "center",

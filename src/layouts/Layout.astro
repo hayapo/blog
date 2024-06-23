@@ -1,5 +1,5 @@
 ---
-import "@/styles/index.css";
+import "../styles/index.css";
 import Head from "../components/common/Head.astro";
 import Header from "../components/common/Header.astro";
 import Footer from "../components/common/Footer.astro";
@@ -9,10 +9,9 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
-  location?: string;
 }
 
-const { title, description, image, location } = Astro.props;
+const { title, description, image } = Astro.props;
 
 const siteTitle = title ?? SITE_TITLE;
 const siteDescription = description ?? SITE_DESCRIPTION;
@@ -23,7 +22,7 @@ const ogImage = new URL(image ?? "/ogp_title.webp", Astro.url.origin);
 <html lang="ja">
   <Head title={siteTitle} description={siteDescription} image={ogImage} />
 	<body>
-		<Header location={location} />
+		<Header/>
 		<slot />
 		<Footer />
 	</body>

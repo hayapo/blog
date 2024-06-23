@@ -10,7 +10,7 @@ const { location } = Astro.props;
 
 const headerStyle = css({
   height: "header",
-  px: { base: "1rem", sm: "10rem" },
+  px: { base: "1rem", sm: "5rem" },
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
@@ -48,42 +48,9 @@ const headerStyle = css({
 						}
 					})}
 				>
-					{SITE_TITLE}
+					{SITE_TITLE}::blog
 				</a>
-				{location && `::${location}`}
 			</span>
-		</div>
-		<div class={css({display: "flex", gap: "3rem"})}>
-			<!-- <a
-				href="/about"
-				title="about"
-				aria-label="link to about page"
-				class={css({
-					fontFamily: "code",
-					fontSize: { base: "x-large", sm: "x-large" },
-					fontWeight: "bold",
-					_hover: {
-						color: "accent",
-					}
-					})}
-			>
-				about
-			</a> -->
-			<a
-				href="/blog"
-				title="blog"
-				aria-label="link to blog page"
-				class={css({
-					fontFamily: "code",
-					fontSize: { base: "x-large", sm: "x-large" },
-					fontWeight: "bold",
-					_hover: {
-						color: "accent",
-					},
-				})}
-			>
-				blog
-			</a>
 		</div>
   </nav>
 </header>

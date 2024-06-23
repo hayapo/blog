@@ -39,8 +39,6 @@
     "@playwright/test": "^1.44.1",
     "@textlint/textlint-plugin-markdown": "^13.4.1",
     "markuplint": "^3.15.0",
-    "prettier": "^3.3.2",
-    "prettier-plugin-astro": "^0.12.3",
     "textlint": "^13.4.1",
     "textlint-rule-preset-ja-spacing": "^2.4.3",
     "textlint-rule-preset-japanese": "^8.0.0",
