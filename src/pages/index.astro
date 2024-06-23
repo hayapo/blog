@@ -12,6 +12,7 @@ const defauleLayoutStyle = css({
   flexDirection: "column",
 	alignItems: "center",
   flex: 1,
+	textAlign: "center",
 });
 
 ---
@@ -37,12 +38,12 @@ const defauleLayoutStyle = css({
 			alignItems: "center",
 			gap: "0.5rem"
 		})}>
-			<IconLink href={SITE_REPOSITORY_URL} title="github" name="mdi:github" color="gray" size="3.0rem"/>
-			<IconLink href=`https://x.com/${TWITTER_ID}` title="twitter" name="mdi:twitter" color="gray" size="3.0rem"/>
-			<IconLink href=`https://mstdn.jp/@${MASTODON_ID}` title="mastodon" name="mdi:mastodon" color="gray" size="3.0rem"/>
-			<IconLink href=`https://bsky.app/profile/${BLUESKY_ID}` title="bluesky" name="ri:bluesky-fill" color="gray" size="3.0rem"/>
-			<IconLink href=`https://discordapp.com/users/${DISCORD_ID}` title="discord" name="ri:discord-fill" color="gray" size="3.0rem"/>
-			<IconLink href=`https://zenn.dev/${ZENN_ID}` title="zenn" name="simple-icons:zenn" color="gray" size="2.0rem"/>
+			<IconLink href={SITE_REPOSITORY_URL} title="github" name="mdi:github" color="gray"/>
+			<IconLink href=`https://x.com/${TWITTER_ID}` title="twitter" name="mdi:twitter" color="gray"/>
+			<IconLink href=`https://mstdn.jp/@${MASTODON_ID}` title="mastodon" name="mdi:mastodon" color="gray"/>
+			<IconLink href=`https://bsky.app/profile/${BLUESKY_ID}` title="bluesky" name="ri:bluesky-fill" color="gray"/>
+			<IconLink href=`https://discordapp.com/users/${DISCORD_ID}` title="discord" name="ri:discord-fill" color="gray"/>
+			<IconLink href=`https://zenn.dev/${ZENN_ID}` title="zenn" name="simple-icons:zenn" color="gray" isZenn/>
 		</div>
   </main>
 </Layout>

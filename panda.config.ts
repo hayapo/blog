@@ -82,6 +82,13 @@ export default defineConfig({
       sizes: {
         header: { value: "5rem" },
         full: { value: "100%" },
+				sm: { value: "12px" },
+				md: { value: "16px" },
+				lg: { value: "24px" },
+				xl: { value: "32px" },
+				"2xl": { value: "48px" },
+				"3xl": { value: "64px" },
+				"4xl": { value: "96px" },
       },
       spacing: {
         header: { value: "5rem" },

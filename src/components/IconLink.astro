@@ -8,12 +8,14 @@ interface Props {
 	name: string;
   size?: string;
   color?: string;
+	isZenn?: boolean;
 }
 
-const ICON_SIZE = "2.0rem";
+const ICON_SIZE = "3rem";
 const MOBILE_ICON_SIZE = "1.5rem";
 
-const { href, title, name, size = ICON_SIZE, color } = Astro.props;
+const { href, title, name, size, color, isZenn } = Astro.props;
+const iconSize = size ?? ICON_SIZE;
 ---
 
 <a
@@ -32,8 +34,8 @@ const { href, title, name, size = ICON_SIZE, color } = Astro.props;
   ]}
 >
 		<Icon name={name} class={css({
-			width: {base: MOBILE_ICON_SIZE, sm: size},
-			height: {base: MOBILE_ICON_SIZE, sm: size}
+			width: {base: isZenn ? "1rem" : MOBILE_ICON_SIZE, sm: isZenn ? "2rem" : iconSize},
+			height: {base: isZenn ? "1rem" : MOBILE_ICON_SIZE, sm: isZenn ? "2rem" : iconSize},
 			})}
 		/>
 </a>
