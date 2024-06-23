@@ -1,9 +1,9 @@
 ---
 import { css } from "root/styled-system/css";
-import { Sprite } from "astro-icon";
+import { Icon } from "astro-icon/components";
 import ExternalLink from "@/components/ExternalLink.astro";
 import { SITE_REPOSITORY_URL } from "@/consts.ts";
-import Icon from "@/components/Icon.astro";
+import IconLink from "@/components/IconLink.astro";
 
 const today = new Date();
 
@@ -30,15 +30,12 @@ const footerStye = css({
     <ExternalLink href="https://astro.build/" title="Astro">Astro</ExternalLink>
   </div>
   <div class={css({ display: "flex", gap: "1.0rem", alignItems: "center" })}>
-    <Icon
+    <IconLink
       href={SITE_REPOSITORY_URL}
       title="Link to Github"
-      color={css({ color: "iconDefault" })}
-    >
-      <Sprite name="mdi:github" />
-    </Icon>
-    <Icon href="/rss.xml" title="RSS feed">
-      <Sprite name="mdi:rss" />
-    </Icon>
+			name="mdi:github"
+			size="2.0rem"
+    />
+    <IconLink href="/blog/rss.xml" title="RSS feed" name="mdi:rss-box"  size="2.0rem" />
   </div>
 </footer>

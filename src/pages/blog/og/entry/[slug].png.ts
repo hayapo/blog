@@ -1,13 +1,13 @@
 import type { APIContext } from "astro";
 import { getEntryBySlug } from "astro:content";
-import { getBlogEntries } from "@/utils/blog";
+import { getBlogEntries } from "@/lib/blog";
 import { OgImage } from "@/components/OgImage";
 
 export async function getStaticPaths() {
   const entries = await getBlogEntries();
   return entries.map((entry) => ({
     params: { slug: entry.slug },
-  }))
+  }));
 }
 
 export async function GET({ params }: APIContext) {
@@ -18,5 +18,5 @@ export async function GET({ params }: APIContext) {
     headers: {
       "Content-Type": "image/png",
     },
-  })
+  });
 }

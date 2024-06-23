@@ -1,4 +1,8 @@
 {
-  "recommendations": ["astro-build.astro-vscode", "EditorConfig.EditorConfig", "davidanson.vscode-markdownlint"],
+  "recommendations": [
+    "astro-build.astro-vscode",
+    "EditorConfig.EditorConfig",
+    "davidanson.vscode-markdownlint"
+  ],
   "unwantedRecommendations": []
 }

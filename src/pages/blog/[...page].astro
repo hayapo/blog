@@ -2,7 +2,7 @@
 import type { Page, GetStaticPathsOptions } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { css } from "root/styled-system/css";
-import { getBlogEntries } from "@/utils/blog";
+import { getBlogEntries } from "@/lib/blog";
 import Layout from "@/layouts/Layout.astro";
 import ArticleCard from "@/components/PostCard.astro";
 import Pagenation from "@/components/Pagenation.astro";
@@ -35,7 +35,7 @@ const articleListStyle = css({
 });
 ---
 
-<Layout>
+<Layout location="blog">
   <main class={defauleLayoutStyle}>
     <ul class={articleListStyle}>
       {

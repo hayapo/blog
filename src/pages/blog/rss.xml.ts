@@ -1,5 +1,5 @@
 import { SITE_TITLE } from "@/consts";
-import { getBlogEntries } from "@/utils/blog";
+import { getBlogEntries } from "@/lib/blog";
 import rss from "@astrojs/rss";
 
 const site = import.meta.env.SITE;

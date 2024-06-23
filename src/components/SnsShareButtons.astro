@@ -1,9 +1,7 @@
 ---
 import { css } from "root/styled-system/css";
-import { Sprite } from "astro-icon";
-import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import { SITE_TITLE } from "@/consts";
-import hatebu from "root/public/hatebu.webp";
 import ShareButton from "./ShareButton.astro";
 
 interface Props {
@@ -41,8 +39,8 @@ const hatenaIconSize = twitterIconSize + 5;
     text="ツイート"
     bgColor={css({ bg: "twitterBlue" })}
   >
-    <Sprite
-      name="mdi:twitter"
+	<Icon
+			name="mdi:twitter"
       class={css({
         color: "twitterWhite",
         w: twitterIconSize,
@@ -54,13 +52,14 @@ const hatenaIconSize = twitterIconSize + 5;
     href={hatbuBookmarkUrl}
     text="ブックマーク"
     bgColor={css({ bg: "hatebuBlue" })}
-    isHatena
   >
-    <Image
-      src={hatebu}
-      alt="hatebu"
-      width={hatenaIconSize}
-      height={hatenaIconSize}
-    />
+    <Icon
+			name="simple-icons:hatenabookmark"
+			class={css({
+				color: "white",
+				w: hatenaIconSize,
+				h: hatenaIconSize,
+			})}
+		/>
   </ShareButton>
 </div>

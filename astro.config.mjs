@@ -1,23 +1,35 @@
 import { defineConfig, passthroughImageService } from "astro/config";
-
 import mdx from "@astrojs/mdx";
-import pandacss from "@pandacss/astro";
 import preact from "@astrojs/preact";
+
+import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://blog.hayapo.dev/blog",
-  base: "/blog",
-  trailingSlash: "never",
-  outDir: "./dist/blog",
+  site: "https://hayapo.dev",
   image: {
-    service: passthroughImageService(),
+    service: passthroughImageService()
   },
-  integrations: [mdx(), pandacss(), preact()],
+
+  integrations: [
+		mdx(),
+		preact(),
+		icon({
+			iconDir: "src/icons",
+			include: {
+				mdi: ["twitter", "github", "rss-box", "chevron-left", "chevron-right", "mastodon"],
+				ri: ["bluesky-fill", "discord-fill"],
+				"simple-icons": ["zenn", "hatenabookmark"]
+			}
+		})],
   markdown: {
     shikiConfig: {
-      theme: "github-dark",
-    },
+      theme: "github-dark"
+    }
   },
-  vite: { optimizeDeps: { exclude: ['@resvg/resvg-js'] } }
+  vite: {
+    optimizeDeps: {
+      exclude: ["@resvg/resvg-js"]
+    }
+  }
 });

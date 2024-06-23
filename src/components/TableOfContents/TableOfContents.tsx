@@ -1,4 +1,4 @@
-import { useHeadings } from "@/utils/toc";
+import { useHeadings } from "@/lib/toc";
 import type { MarkdownHeading } from "astro";
 import type { JSX } from "preact";
 import { useEffect, useState } from "preact/hooks";

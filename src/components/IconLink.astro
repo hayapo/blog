@@ -1,9 +1,11 @@
 ---
+import { Icon } from "astro-icon/components";
 import { css } from "root/styled-system/css";
 
 interface Props {
   href: string;
   title: string;
+	name: string;
   size?: string;
   color?: string;
 }
@@ -11,7 +13,7 @@ interface Props {
 const ICON_SIZE = "2.0rem";
 const MOBILE_ICON_SIZE = "1.5rem";
 
-const { href, title, size = ICON_SIZE, color } = Astro.props;
+const { href, title, name, size = ICON_SIZE, color } = Astro.props;
 ---
 
 <a
@@ -29,13 +31,9 @@ const { href, title, size = ICON_SIZE, color } = Astro.props;
     color,
   ]}
 >
-  <svg
-    class={css({
-      w: { base: MOBILE_ICON_SIZE, sm: size },
-      h: { base: MOBILE_ICON_SIZE, sm: size },
-    })}
-    viewBox="0 0 24 24"
-  >
-    <slot />
-  </svg>
+		<Icon name={name} class={css({
+			width: {base: MOBILE_ICON_SIZE, sm: size},
+			height: {base: MOBILE_ICON_SIZE, sm: size}
+			})}
+		/>
 </a>

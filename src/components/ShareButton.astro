@@ -8,13 +8,11 @@ type Props = {
   isHatena?: boolean;
 };
 
-const { href, text, bgColor, isHatena } = Astro.props;
+const { href, text, bgColor } = Astro.props;
 
 const size = 35;
 
 const defaultStyle = css({ px: 7, gap: 5 });
-
-const hatenaStyle = css({ pl: 4, pr: 7, gap: 0 });
 ---
 
 <a
@@ -38,7 +36,7 @@ const hatenaStyle = css({ pl: 4, pr: 7, gap: 0 });
         },
       }),
       bgColor,
-      isHatena ? hatenaStyle : defaultStyle,
+			defaultStyle,
     ]}
   >
     <slot />

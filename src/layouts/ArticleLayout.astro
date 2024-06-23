@@ -2,12 +2,13 @@
 import { css } from "root/styled-system/css";
 import type { CollectionEntry } from "astro:content";
 import type { MarkdownHeading } from "astro";
-import Layout from "@/layouts/Layout.astro";
-import ArticleTopItems from "@/components/ArticleTopItems.astro";
-import SnsShareButtons from "@/components/SnsShareButtons.astro";
-import SideNav from "@/components/SideNav.astro";
-import { TableOfContents } from "@/components/TableOfContents/TableOfContents";
-import MobileTableOfContents from "@/components/TableOfContents/MobileTableOfContents.astro";
+import Layout from "../layouts/Layout.astro";
+import ArticleTopItems from "../components/ArticleTopItems.astro";
+import SnsShareButtons from "../components/SnsShareButtons.astro";
+import SideNav from "../components/SideNav.astro";
+import { TableOfContents } from "../components/TableOfContents/TableOfContents";
+import MobileTableOfContents from "../components/TableOfContents/MobileTableOfContents.astro";
+import { Icon } from 'astro-icon/components'
 
 type Props = {
   frontmatter: CollectionEntry<"blog">;
@@ -33,27 +34,46 @@ const articleLayoutStyle = css({
   title={title}
   description={description}
   image={`/blog/og/entry/${slug}.png`}
+  location="blog"
 >
-  <main class={articleLayoutStyle}>
-    <SideNav>
-      <TableOfContents headings={headings} client:load />
-      <SnsShareButtons
-        title={title}
-        url={`${import.meta.env.SITE}/entry/${slug}`}
-        className={css({ mt: "1.5rem" })}
-      />
-    </SideNav>
-    <div class={css({ flex: 1, w: "100%", maxWidth: "breakpoint-md" })}>
-      <ArticleTopItems {...frontmatter.data} />
-      <MobileTableOfContents headings={headings} />
-      <article>
-        <slot />
-      </article>
-      <SnsShareButtons
-        title={title}
-        url={`${import.meta.env.SITE}/entry/${slug}`}
-        className={css({ mt: "2rem", display: { base: "block", lg: "none" } })}
-      />
-    </div>
+	<main class={articleLayoutStyle}>
+		<SideNav>
+			<TableOfContents headings={headings} client:load />
+			<SnsShareButtons
+			title={title}
+			url={`${import.meta.env.SITE}/entry/${slug}`}
+			className={css({ mt: "1.5rem" })}
+			/>
+		</SideNav>
+		<div>
+			<div>
+				<a href="/blog" class={css({
+					width: "fit-content",
+					display: "flex",
+					alignItems: "center",
+					fontSize: "1.2em",
+					fontWeight: "bold",
+					_hover: {
+						color: "accent",
+					}
+				})}>
+					<Icon name="mdi:chevron-left" />
+					記事一覧に戻る
+				</a>
+			</div>
+			<div class={css({ flex: 1, w: "100%", maxWidth: "breakpoint-md" })}>
+				<ArticleTopItems {...frontmatter.data} />
+				<MobileTableOfContents headings={headings} />
+				<article>
+					<slot />
+				</article>
+				<SnsShareButtons
+					title={title}
+					url={`${import.meta.env.SITE}/entry/${slug}`}
+					className={css({ mt: "2rem", display: { base: "block", lg: "none" } })}
+				/>
+
+			</div>
+		</div>
   </main>
 </Layout>
