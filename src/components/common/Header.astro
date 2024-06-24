@@ -1,16 +1,14 @@
 ---
 import { css } from "root/styled-system/css";
-import { SITE_TITLE } from "@/consts";
+import { SITE_TITLE, SITE_TOP } from "../../consts";
 
 interface Props {
   location?: string;
 }
 
-const { location } = Astro.props;
-
 const headerStyle = css({
   height: "header",
-  px: { base: "1rem", sm: "5rem" },
+  px: { base: "1rem", sm: "3rem", lg: "5rem" },
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
@@ -39,7 +37,7 @@ const headerStyle = css({
 		})}>
 			<span class={css({display: "flex"})}>
 				<a
-					href="/blog"
+					href=`${SITE_TOP}`
 					title="Back to home"
 					aria-label="Back to home"
 					class={css({

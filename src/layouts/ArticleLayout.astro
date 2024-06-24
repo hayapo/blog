@@ -9,6 +9,7 @@ import SideNav from "../components/SideNav.astro";
 import { TableOfContents } from "../components/TableOfContents/TableOfContents";
 import MobileTableOfContents from "../components/TableOfContents/MobileTableOfContents.astro";
 import { Icon } from 'astro-icon/components'
+import { SITE_TOP } from '../consts'
 
 type Props = {
   frontmatter: CollectionEntry<"blog">;
@@ -45,21 +46,23 @@ const articleLayoutStyle = css({
 			/>
 		</SideNav>
 		<div>
-			<div>
-				<a href="/" class={css({
-					width: "fit-content",
+			<a href=`${SITE_TOP}` class={
+				css({
 					display: "flex",
 					alignItems: "center",
-					fontSize: "1.2em",
+					fontSize: "1em",
 					fontWeight: "bold",
+					w: "fit-content",
+					bg: "accent-blured",
+					px: "0.5rem",
+					rounded: "0.3em",
 					_hover: {
 						color: "accent",
 					}
-				})}>
-					<Icon name="mdi:chevron-left" />
-					記事一覧に戻る
-				</a>
-			</div>
+			})}>
+				<Icon name="mdi:chevron-left" />
+				記事一覧に戻る
+			</a>
 			<div class={css({ flex: 1, w: "100%", maxWidth: "breakpoint-md" })}>
 				<ArticleTopItems {...frontmatter.data} />
 				<MobileTableOfContents headings={headings} />
