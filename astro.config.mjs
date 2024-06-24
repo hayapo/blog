@@ -6,7 +6,7 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://hayapo.dev",
+  site: "https://blog-hayapo-dev.pages.dev",
   image: {
     service: passthroughImageService()
   },
