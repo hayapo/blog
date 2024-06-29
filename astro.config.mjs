@@ -7,6 +7,10 @@ import icon from "astro-icon";
 // https://astro.build/config
 export default defineConfig({
   site: "https://blog-hayapo-dev.pages.dev",
+	base: "/blog",
+	trailingSlash: "never",
+	outDir: "./dist/blog",
+	publicDir: "./public/blog",
   image: {
     service: passthroughImageService()
   },

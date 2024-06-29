@@ -12,7 +12,7 @@ export async function OgImage(text: string) {
   const ogBackgroundImage = readFileSync(
     import.meta.env.DEV
       ? new URL(`../assets/og_background.png`, import.meta.url)
-      : `./dist/${ogBackground.src}`,
+      : `./dist${ogBackground.src}`,
     { encoding: "base64" },
   );
   const ogBackgroundImageUrl = `data:image/png;base64,${ogBackgroundImage}`;
