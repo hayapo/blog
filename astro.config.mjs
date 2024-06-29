@@ -6,7 +6,7 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://blog-hayapo-dev.pages.dev",
+  site: "https://hayapo.dev/blog",
 	base: "/blog",
 	trailingSlash: "never",
 	outDir: "./dist/blog",
